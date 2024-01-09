@@ -1,0 +1,41 @@
+$navbar-primary-color: #3498db;
+$navbar-background-color: #ecf0f1;
+$navbar-height: 60px;
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $navbar-primary-color;
+  padding: 0 20px;
+  height: $navbar-height;
+  color: #fff;
+
+  &-logo {
+    img {
+      max-height: 100%;
+    }
+  }
+
+  &-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+    li {
+      margin: 0 15px;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+
+        &:hover {
+          border-bottom: 2px solid #fff;
+        }
+      }
+    }
+  }
+
+}
