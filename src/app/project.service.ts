@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { catchError } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Project } from './project.js';
@@ -15,7 +16,7 @@ export class ProjectService {
     private http: HttpClient
   ) { }
 
-  /** GET heroes from the server */
+  /** GET projects from the server */
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>(this.projectsUrl)
   }
