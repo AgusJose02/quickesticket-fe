@@ -1,8 +1,8 @@
 <div class="container">
-  <div [hidden]="submitted">
+  <!-- <div [hidden]="submitted"> -->
+  <div>
     <h1>Nuevo proyecto</h1>
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
-      {{model | json}}
 
       <div class="form-group">
         <label for="name">Nombre</label>
@@ -28,8 +28,8 @@
     </form>
   </div>
 
-  <div [hidden]="!submitted">
+  <!-- <div [hidden]="!submitted">
     <h2>Proyecto creado!</h2>
     <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
-  </div>
-</div>
+   </div>
+  </div> -->

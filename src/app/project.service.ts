@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of ,catchError, map, tap} from 'rxjs';
+import { Observable, of ,catchError, map, tap, Subject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Project } from './project.js';
@@ -10,6 +10,9 @@ import { Project as ProjectClass } from './project-class.js';
 })
 export class ProjectService {
   private projectsUrl = 'http://localhost:3000/api/projects';
+  private newProjectSubject = new Subject<ProjectClass>();
+
+  newProject$ = this.newProjectSubject.asObservable(); // para que al crear nuevo proyecto se redirija a su página
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -34,7 +37,7 @@ export class ProjectService {
   getProject(id: number): Observable<Project> {
     const url = `${this.projectsUrl}/${id}`;
     return this.http.get<Project>(url).pipe(
-      tap(_ => console.log(`fetched hero id=${id}`)),
+      tap(_ => console.log(`fetched project id=${id}`)),
       catchError(this.handleError<Project>(`getProject id=${id}`))
     );
   }
@@ -42,7 +45,7 @@ export class ProjectService {
   /** POST: add a new project to the server */
   addProject(project: ProjectClass): Observable<ProjectClass> {
     return this.http.post<ProjectClass>(this.projectsUrl, project, this.httpOptions).pipe(
-      tap((newProject: ProjectClass) => console.log(`added hero w/ id=${newProject.name}`)),
+      tap((newProject: ProjectClass) => this.newProjectSubject.next(newProject)),
       catchError(this.handleError<ProjectClass>('addProject'))
     );
   }
