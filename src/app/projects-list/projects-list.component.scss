@@ -1,0 +1,14 @@
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+
+  h2 {
+    margin: 0;
+  }
+
+  .btn-primary {
+    // Estilos adicionales si es necesario
+  }
+}

@@ -1,8 +1,18 @@
-<h2>Mis proyectos</h2>
-<ul class="projects">
-  <li *ngFor="let project of projects">
-    <a href="/projects/{{project.id}}">{{project.name}}</a>
-  </li>
-</ul>
+<div class="container" [hidden]="createProject">
+  <div class="list-header">
+    <h2>Mis proyectos</h2>
+    <button type="button" class="btn btn-primary" (click)="createProject=true">Nuevo proyecto</button>
+  </div>
+  
+  <div class="project-list">
+    <ul class="projects">
+      <li *ngFor="let project of projects">
+        <a href="/projects/{{project.id}}">{{project.name}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
 
-<app-project-form></app-project-form>
+<app-project-form 
+  (cancel)="createProject=$event"
+  [hidden]="!createProject"></app-project-form>

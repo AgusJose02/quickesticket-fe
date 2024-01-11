@@ -11,6 +11,8 @@ import { ProjectService } from '../project.service.js';
 export class ProjectsListComponent {
   projects: Project[] = [];
 
+  createProject = false;
+
   constructor(private projectService: ProjectService) { }
 
   getProjects(): void {

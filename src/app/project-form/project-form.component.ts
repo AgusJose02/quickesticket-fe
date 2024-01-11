@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Project } from '../project-class.js';
+import { ProjectService } from '../project.service.js';
 
 @Component({
   selector: 'app-project-form',
@@ -8,15 +9,26 @@ import { Project } from '../project-class.js';
   styleUrl: './project-form.component.scss'
 })
 export class ProjectFormComponent {
+  @Output() cancel = new EventEmitter<boolean>();
 
-  model = new Project(10, '', '', '', '');
+  model = new Project('', '', 'wiki','2024-01-10');
 
   submitted = false;
 
-  onSubmit() { this.submitted = true; }
+  constructor(
+    private projectService: ProjectService,
+  ) { }
 
-  newProject() {
-    this.model = new Project(11, '', '', '', '2024-01-10')
+  onSubmit() {
+    this.submitted = true;
+    
+    this.projectService.addProject(this.model)
+      .subscribe(); //TODO: Contenido del subscribe
+  }
+
+  onCancel() {
+    this.cancel.emit(false);
   }
 
 }
+ 

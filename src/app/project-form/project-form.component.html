@@ -2,6 +2,7 @@
   <div [hidden]="submitted">
     <h1>Nuevo proyecto</h1>
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
+      {{model | json}}
 
       <div class="form-group">
         <label for="name">Nombre</label>
@@ -22,6 +23,8 @@
       </div>
       <button type="submit" class="btn btn-success"
         [disabled]="!projectForm.form.valid">Crear proyecto</button>
+      <button type="button" class="btn btn-danger"
+        (click)="onCancel()">Cancelar</button>
     </form>
   </div>
 
