@@ -1,4 +1,5 @@
 $navbar-primary-color: #3498db;
+$navbar-hover-color: #146da9;
 $navbar-background-color: #ecf0f1;
 $navbar-height: 60px;
 
@@ -8,6 +9,7 @@ $navbar-height: 60px;
   align-items: center;
   background-color: $navbar-primary-color;
   padding: 0 20px;
+  margin: 0 0px;
   height: $navbar-height;
   color: #fff;
 
@@ -18,24 +20,28 @@ $navbar-height: 60px;
   }
 
   &-links {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    align-items: center;
+    text-align: center;
+      list-style-type: none;
+      list-style-type: none;
+      margin: 0;
+      padding: 15px;
 
     li {
+      display: inline;
       margin: 0 15px;
+      font-size: 17px;
 
       a {
         text-decoration: none;
         color: #fff;
+        padding: 14px;
 
         &:hover {
-          border-bottom: 2px solid #fff;
+          background-color: $navbar-hover-color;
         }
       }
     }
   }
 
 }
+

@@ -50,6 +50,26 @@ export class ProjectService {
     );
   }
 
+  /** PUT: update the hero on the server */
+  updateProject(project: ProjectClass): Observable<any> {
+    const url = `${this.projectsUrl}/${project.id}`;
+
+    return this.http.put(url, project, this.httpOptions).pipe(
+      tap(_ => console.log(`updated project id=${project.id}`)),
+      catchError(this.handleError<any>('updateProject'))
+    );
+  }
+
+  /** DELETE: delete the hero from the server */
+  deleteProject(id: number): Observable<ProjectClass> {
+    const url = `${this.projectsUrl}/${id}`;
+
+    return this.http.delete<ProjectClass>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted project id=${id}`)),
+      catchError(this.handleError<ProjectClass>('deleteProject'))
+    );
+  } 
+
   // Handler de errores
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

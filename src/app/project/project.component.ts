@@ -13,6 +13,8 @@ import { ProjectService } from '../project.service.js';
 export class ProjectComponent {
   @Input() project?: Project;
 
+  section = 'tickets';
+
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
@@ -21,6 +23,7 @@ export class ProjectComponent {
 
   ngOnInit(): void {
     this.getProject();
+    this.section = 'tickets';
   }
 
   getProject(): void {

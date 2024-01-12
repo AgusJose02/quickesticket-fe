@@ -1,4 +1,20 @@
-<h2>{{project?.name | uppercase}}</h2>
-<p>{{project?.description}}</p>
-<p>Wiki: {{project?.wiki}}</p>
-<p>Fecha de creación: {{project?.creation_date}}</p>
+<nav class="navbar">
+  <div>
+    <h2>{{project?.name | uppercase}}</h2>
+  </div>
+  <ul class="navbar-links">
+    <li><button (click)="section='tickets'">Tickets</button></li>
+    <li><button (click)="section='new-ticket'">Nuevo ticket</button></li>
+    <li><button (click)="section='wiki'">Wiki</button></li>
+    <li><button (click)="section='settings'">Opciones</button></li>
+  </ul>
+</nav>
+
+<div id="tickets" *ngIf="section === 'tickets'">
+  <p>{{project?.description}}</p>
+  <p>Wiki: {{project?.wiki}}</p>
+  <p>Fecha de creación: {{project?.creation_date}}</p>
+</div>
+
+<app-edit-project-form *ngIf="section === 'settings'" [project]="project"></app-edit-project-form>
+<!-- <app-edit-project-form></app-edit-project-form> -->

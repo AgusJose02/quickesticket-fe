@@ -9,6 +9,7 @@ import { ProjectsListComponent } from './projects-list/projects-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ProjectFormComponent } from './project-form/project-form.component';
+import { EditProjectFormComponent } from './edit-project-form/edit-project-form.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ProjectFormComponent } from './project-form/project-form.component';
     ProjectComponent,
     ProjectsListComponent,
     NavbarComponent,
-    ProjectFormComponent
+    ProjectFormComponent,
+    EditProjectFormComponent
   ],
   imports: [
     BrowserModule,
