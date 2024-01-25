@@ -1,0 +1,29 @@
+<p>project-tickets works!</p>
+<p>{{project?.description}}</p>
+<p>Wiki: {{project?.wiki}}</p>
+<p>Fecha de creación: {{project?.creation_date}}</p>
+
+<div *ngIf="tickets">
+  <table *ngIf="tickets.length > 0" class="table">
+
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Título</th>
+        <th>Estado</th>
+        <th>Responsable</th>
+      </tr>
+    </thead>
+      
+    <tbody>
+      <tr *ngFor="let ticket of  tickets">
+        <td>{{ ticket.id }}</td>
+        <td>{{ ticket.title }}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+
+  

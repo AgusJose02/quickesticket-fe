@@ -10,11 +10,6 @@
   </ul>
 </nav>
 
-<div id="tickets" *ngIf="section === 'tickets'">
-  <p>{{project?.description}}</p>
-  <p>Wiki: {{project?.wiki}}</p>
-  <p>Fecha de creación: {{project?.creation_date}}</p>
-</div>
-
+<app-project-tickets *ngIf="section === 'tickets'" [project]="project"></app-project-tickets>
 <app-edit-project-form *ngIf="section === 'settings'" [project]="project"></app-edit-project-form>
 <!-- <app-edit-project-form></app-edit-project-form> -->
