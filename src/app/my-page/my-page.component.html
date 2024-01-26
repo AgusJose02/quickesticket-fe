@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="list-header">
+    <h2>Mis tickets</h2>
+  </div>
+
+  <div *ngIf="tickets">
+    <table *ngIf="tickets.length > 0" class="table">
+  
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Estado</th>
+          <th>Proyecto</th>
+          <th>Tiempo dedicado</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let ticket of  tickets">
+          <td>{{ ticket.id }}</td>
+          <td>
+            <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
+          </td>
+          <td>{{ ticket.state.description }}</td>
+          <td>
+            <a href="/projects/{{ticket.project.id}}">{{ ticket.project.name }}</a>
+          </td>
+          <td>{{ ticket.total_hours }}</td>
+        </tr>
+      </tbody>
+  
+    </table>
+  </div>
+</div>
