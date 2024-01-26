@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>
+    <a href="/projects/{{ticket?.project?.id}}">{{ ticket?.project?.name }}</a>
+  </h1>
+  <h2>#{{ ticket?.id }} - {{ ticket?.title }}</h2>
+  <div>
+    <h4>Estado: {{ ticket?.state?.description }}</h4>
+    <h4>Responsable: {{ ticket?.responsible }}</h4>
+    <h4>Tiempo dedicado: {{ ticket?.total_hours }}</h4>
+  </div>
+  <div>
+    <h4>Fecha de inicio: {{ ticket?.beginning_date }}</h4>
+    <h4>Fecha de fin: {{ ticket?.end_date }}</h4>
+    <h4>Creado por: {{ ticket?.creator }}</h4>
+  </div>
+  <div>
+    <h4>Descripción</h4>
+    <p>{{ ticket?.description }}</p>
+  </div>
+</div>
