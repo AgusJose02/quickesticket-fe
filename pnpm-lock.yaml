@@ -34,6 +34,9 @@ dependencies:
   express:
     specifier: ^4.18.2
     version: 4.18.2
+  primeng:
+    specifier: ^17.4.0
+    version: 17.4.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/forms@17.0.0)(rxjs@7.8.0)(zone.js@0.14.2)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.0
@@ -4948,7 +4951,7 @@ packages:
     dependencies:
       copy-anything: 2.0.6
       parse-node-version: 1.0.1
-      tslib: 2.3.0
+      tslib: 2.6.2
     optionalDependencies:
       errno: 0.1.8
       graceful-fs: 4.2.11
@@ -5884,6 +5887,23 @@ packages:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
     engines: {node: '>=6'}
 
+  /primeng@17.4.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/forms@17.0.0)(rxjs@7.8.0)(zone.js@0.14.2):
+    resolution: {integrity: sha512-fqIFXORQjfTZFepg1MBz/vqheMjHy104ugxuTT1BCzEbVsjc2bjVyedEsS3u+N7bYag7TLMvv/FjzbTAq6hzOw==}
+    peerDependencies:
+      '@angular/common': ^17.0.0
+      '@angular/core': ^17.0.0
+      '@angular/forms': ^17.0.0
+      rxjs: ^6.0.0 || ^7.8.1
+      zone.js: ~0.14.0
+    dependencies:
+      '@angular/common': 17.0.0(@angular/core@17.0.0)(rxjs@7.8.0)
+      '@angular/core': 17.0.0(rxjs@7.8.0)(zone.js@0.14.2)
+      '@angular/forms': 17.0.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/platform-browser@17.0.0)(rxjs@7.8.0)
+      rxjs: 7.8.0
+      tslib: 2.6.2
+      zone.js: 0.14.2
+    dev: false
+
   /proc-log@3.0.0:
     resolution: {integrity: sha512-++Vn7NS4Xf9NacaU9Xq3URUuqZETPsf8L4j5/ckhaRYsfPeRyzGw+iDjFhV/Jr3uNmTvvddEJFWh5R1gRgUH8A==}
     engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
@@ -6184,7 +6204,7 @@ packages:
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.6.2
     dev: true
 
   /safe-buffer@5.1.2:
@@ -6860,7 +6880,6 @@ packages:
 
   /tslib@2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-    dev: true
 
   /tuf-js@2.1.0:
     resolution: {integrity: sha512-eD7YPPjVlMzdggrOeE8zwoegUaG/rt6Bt3jwoQPunRiNVzgcCE009UDFJKJjG+Gk9wFu6W/Vi+P5d/5QpdD9jA==}

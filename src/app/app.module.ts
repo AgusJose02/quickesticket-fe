@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProjectFormComponent } from './project-form/project-form.component';
 import { EditProjectFormComponent } from './edit-project-form/edit-project-form.component';
 import { ProjectTicketsComponent } from './project-tickets/project-tickets.component';
+import { MyPageComponent } from './my-page/my-page.component';
+import { TicketComponent } from './ticket/ticket.component';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProjectTicketsComponent } from './project-tickets/project-tickets.compo
     NavbarComponent,
     ProjectFormComponent,
     EditProjectFormComponent,
-    ProjectTicketsComponent
+    ProjectTicketsComponent,
+    MyPageComponent,
+    TicketComponent
   ],
   imports: [
     BrowserModule,

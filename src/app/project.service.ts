@@ -20,8 +20,6 @@ export class ProjectService {
 
   constructor(
     private http: HttpClient
-
-
   ) { }
 
   /** GET projects from the server */

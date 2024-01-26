@@ -1,6 +1,4 @@
-<p>project-tickets works!</p>
 <p>{{project?.description}}</p>
-<p>Wiki: {{project?.wiki}}</p>
 <p>Fecha de creación: {{project?.creation_date}}</p>
 
 <div *ngIf="tickets">
@@ -18,7 +16,11 @@
     <tbody>
       <tr *ngFor="let ticket of  tickets">
         <td>{{ ticket.id }}</td>
-        <td>{{ ticket.title }}</td>
+        <td>
+          <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
+        </td>
+        <td>{{ ticket.state.description }}</td>
+        <td>{{ ticket.responsible }}</td>
       </tr>
     </tbody>
 
