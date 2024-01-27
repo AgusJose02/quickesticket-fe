@@ -3,12 +3,16 @@ import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Ticket } from './ticket.js';
+import { Ticket as TicketClass } from './ticket-class.js';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
   private ticketsUrl = 'http://localhost:3000/api/tickets'
+  private newTicketSubject = new Subject<TicketClass>();
+
+  newProject$ = this.newTicketSubject.asObservable(); // para que al crear nuevo proyecto se redirija a su página
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -33,6 +37,14 @@ export class TicketService {
     return this.http.get<Ticket>(url).pipe(
       tap(_ => console.log(`fetched ticket id=${id}`)),
       catchError(this.handleError<Ticket>(`getTicket id=${id}`))
+    );
+  }
+
+  /** POST: add a new ticket to the server */
+  addTicket(ticket: TicketClass): Observable<TicketClass> {
+    return this.http.post<TicketClass>(this.ticketsUrl, ticket, this.httpOptions).pipe(
+      tap((newTicket: TicketClass) => this.newTicketSubject.next(newTicket)),
+      catchError(this.handleError<TicketClass>('addTicket'))
     );
   }
 
