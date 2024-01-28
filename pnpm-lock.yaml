@@ -38,7 +38,7 @@ dependencies:
     specifier: ^17.4.0
     version: 17.4.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/forms@17.0.0)(rxjs@7.8.0)(zone.js@0.14.2)
   rxjs:
-    specifier: ~7.8.0
+    specifier: ^7.8.0
     version: 7.8.0
   tslib:
     specifier: ^2.3.0
@@ -6199,7 +6199,7 @@ packages:
   /rxjs@7.8.0:
     resolution: {integrity: sha512-F2+gxDshqmIub1KdvZkaEfGDwLNpPvk9Fs6LD/MyQxNgMds/WH9OdDDXOmxUZpME+iSK3rQCctkL0DYyytUqMg==}
     dependencies:
-      tslib: 2.3.0
+      tslib: 2.6.2
 
   /rxjs@7.8.1:
     resolution: {integrity: sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==}

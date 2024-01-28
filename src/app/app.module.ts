@@ -3,8 +3,11 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
+import { ButtonModule } from 'primeng/button';
+import { MessagesModule } from 'primeng/messages';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,6 +43,8 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
     BrowserAnimationsModule,
     CalendarModule,
     DropdownModule,
+    ButtonModule,
+    MessagesModule,
   ],
   providers: [
     provideClientHydration()

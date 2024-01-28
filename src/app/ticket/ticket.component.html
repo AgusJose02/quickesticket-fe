@@ -1,20 +1,42 @@
 <div class="container">
+
   <h1>
     <a href="/projects/{{ticket?.project?.id}}">{{ ticket?.project?.name }}</a>
   </h1>
-  <h2>#{{ ticket?.id }} - {{ ticket?.title }}</h2>
+
+    <!-- TODO: IMPLEMENTAR MENSAJES DE ÉXITO
   <div>
-    <h4>Estado: {{ ticket?.state?.description }}</h4>
-    <h4>Responsable: {{ ticket?.responsible }}</h4>
-    <h4>Tiempo dedicado: {{ ticket?.total_hours }}</h4>
-  </div>
+    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+    <p-message severity="Succes" text="Ticket actualizado"></p-message>
+  </div> -->
+
   <div>
-    <h4>Fecha de inicio: {{ ticket?.beginning_date }}</h4>
-    <h4>Fecha de fin: {{ ticket?.end_date }}</h4>
-    <h4>Creado por: {{ ticket?.creator }}</h4>
+    <h2>#{{ ticket?.id }} - {{ ticket?.title }}</h2>
+    <div *ngIf="updateTicket===false">
+      <p-button label="Editar" (click)="updateTicket=true"></p-button>
+      <a href="" target="_blank" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
+    </div>
   </div>
-  <div>
-    <h4>Descripción</h4>
-    <p>{{ ticket?.description }}</p>
+
+  <div *ngIf="updateTicket===false">
+    <div>
+      <h4>Estado: {{ ticket?.state?.description }}</h4>
+      <h4>Responsable: {{ ticket?.responsible }}</h4>
+      <h4>Tiempo dedicado: {{ ticket?.total_hours }}</h4>
+    </div>
+    
+    <div>
+      <h4>Fecha de inicio: {{ ticket?.beginning_date }}</h4>
+      <h4>Fecha de fin: {{ ticket?.end_date }}</h4>
+      <h4>Creado por: {{ ticket?.creator }}</h4>
+    </div>
+    
+    <div>
+      <h4>Descripción</h4>
+      <p>{{ ticket?.description }}</p>
+    </div>
   </div>
+
+  <app-ticket-form *ngIf="updateTicket" 
+    [ticket]="ticket" (ticketUpdated)="onUpdate()" (cancel)="onCancel()"></app-ticket-form>
 </div>

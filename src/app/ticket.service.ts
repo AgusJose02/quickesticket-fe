@@ -48,6 +48,15 @@ export class TicketService {
     );
   }
 
+  updateTicket(ticket: TicketClass): Observable<any> {
+    const url = `${this.ticketsUrl}/${ticket.id}`;
+
+    return this.http.put(url, ticket, this.httpOptions).pipe(
+      tap(_ => console.log(`updated ticket id=${ticket.id}`)),
+      catchError(this.handleError<any>('updateTicket'))
+    );
+  }
+
   // Handler de errores
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
