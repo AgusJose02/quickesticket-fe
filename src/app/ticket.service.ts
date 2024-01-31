@@ -34,6 +34,7 @@ export class TicketService {
   /** GET ticket by id. Will 404 if id not found */
   getTicket(id: number): Observable<Ticket> {
     const url = `${this.ticketsUrl}/${id}`;
+    
     return this.http.get<Ticket>(url).pipe(
       tap(_ => console.log(`fetched ticket id=${id}`)),
       catchError(this.handleError<Ticket>(`getTicket id=${id}`))
@@ -56,6 +57,16 @@ export class TicketService {
       catchError(this.handleError<any>('updateTicket'))
     );
   }
+
+  /** DELETE: delete the ticket from the server */
+  deleteTicket(id: number): Observable<TicketClass> {
+    const url = `${this.ticketsUrl}/${id}`;
+
+    return this.http.delete<TicketClass>(url, this.httpOptions).pipe(
+      tap(_ => console.log(`deleted ticket id=${id}`)),
+      catchError(this.handleError<TicketClass>('deleteTicket'))
+    );
+  } 
 
   // Handler de errores
   private handleError<T>(operation = 'operation', result?: T) {

@@ -58,7 +58,7 @@ export class ProjectService {
     );
   }
 
-  /** DELETE: delete the hero from the server */
+  /** DELETE: delete the project from the server */
   deleteProject(id: number): Observable<ProjectClass> {
     const url = `${this.projectsUrl}/${id}`;
 

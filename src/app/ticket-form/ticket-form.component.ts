@@ -23,8 +23,12 @@ export class TicketFormComponent {
   @Output() ticketUpdated = new EventEmitter<boolean>();
 
   currentUrl = this.route.snapshot.url[0].path;
-  
-  model = new TicketClass(0, 0, 1, null, '', null, 0, null, '', null);
+
+  begDate = new Date();
+  endDate?: Date;
+  dateValidation: boolean = true;
+
+  model = new TicketClass(0, 0, 1, null, '', null, 1, null, '', null);
 
   ticketStates: TicketState[] = [];
 
@@ -58,8 +62,9 @@ export class TicketFormComponent {
       this.model.project = this.ticket.project.id;
       this.model.creator = this.ticket.creator;
       this.model.responsible = this.ticket.responsible;
-      this.model.beginning_date = this.ticket.beginning_date;
-      this.model.end_date = this.ticket.end_date;
+      this.model.beginning_date = '';
+      this.begDate = new Date(this.ticket.beginning_date);
+      this.endDate = new Date(this.ticket.end_date);
       this.model.state = this.ticket.state.id;
       this.model.total_hours = this.ticket.total_hours;
       this.model.title = this.ticket.title;
@@ -73,11 +78,26 @@ export class TicketFormComponent {
     }
   }
 
+  validateEndDate() {
+    if(this.endDate) {
+      let from = this.begDate.setHours(0,0,0,0)
+      let to = this.endDate.setHours(0,0,0,0)
+      this.dateValidation = false;
+      if(to >= from) {
+        this.dateValidation = true;
+      }
+    }
+  }
+
   onSubmit() {
-    
+    // Asigno las fechas al modelo
+    this.model.beginning_date = this.begDate.toDateString();
+    if (this.endDate){
+      this.model.end_date = this.endDate?.toDateString()
+    }
+
     if(this.currentUrl === 'projects') {
       this.model.project = this.project?.id;
-      this.model.state = 1; // BORRAR UNA VEZ QUE FUNCIONE EL DROPDOWN
 
       this.ticketService.addTicket(this.model)
         .subscribe(

@@ -15,6 +15,7 @@
     <div *ngIf="updateTicket===false">
       <p-button label="Editar" (click)="updateTicket=true"></p-button>
       <a href="" target="_blank" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
+      <p-button label="Borrar" (click)="deleteTicket()"></p-button>
     </div>
   </div>
 
@@ -26,8 +27,8 @@
     </div>
     
     <div>
-      <h4>Fecha de inicio: {{ ticket?.beginning_date }}</h4>
-      <h4>Fecha de fin: {{ ticket?.end_date }}</h4>
+      <h4>Fecha de inicio: {{ ticket?.beginning_date | date:'dd/MM/yyyy'}}</h4>
+      <h4>Fecha de fin: {{ ticket?.end_date |date:'dd/MM/yyyy'}}</h4>
       <h4>Creado por: {{ ticket?.creator }}</h4>
     </div>
     
