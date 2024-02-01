@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
+
 import { Ticket } from '../ticket.js';
+import { TicketState } from '../ticket-state.js';
 import { TicketService } from '../ticket.service.js';
+import { TicketStateService } from '../ticket-state.service.js';
+import { TicketFilter } from '../ticket-filter.js';
 
 @Component({
   selector: 'app-my-page',
@@ -8,16 +12,51 @@ import { TicketService } from '../ticket.service.js';
   styleUrl: './my-page.component.scss'
 })
 export class MyPageComponent {
-  tickets: Ticket[] = []
+  tickets: Ticket[] = [];
+  filteredTickets: Ticket[] = [];
 
-  constructor(private ticketService: TicketService) { }
+  ticketStates: TicketState[] = [];
+  selectedTicketStates: number[] = [1, 2, 3, 4];
 
-  getTickets(): void {
-    this.ticketService.getTickets()
-      .subscribe(tickets => this.tickets = tickets);
-  }
+  constructor(
+    private ticketService: TicketService,
+    private ticketStateService: TicketStateService,
+    private ticketFilter: TicketFilter,
+  ) { }
 
   ngOnInit(): void {
     this.getTickets();
+    this.getTicketStates();
+  }  
+
+  getTickets(): void {
+    this.ticketService.getTickets()
+      .subscribe(tickets => {
+        this.tickets = tickets
+        this.filterTickets();
+      });
   }
+
+  getTicketStates(): void {
+    this.ticketStateService.getTicketStates()
+      .subscribe(ticketStates => this.ticketStates = ticketStates);
+  }
+
+  filterTickets(): void {
+    this.filteredTickets = this.ticketFilter.assignFilteredTickets(
+      this.tickets,
+      this.filteredTickets,
+      this.selectedTicketStates
+    );
+  }
+
+  // assignFilteredTickets(): void {
+  //   this.filteredTickets = this.filterTickets();
+  //   this.filteredTickets.sort((a,b) => b.id - a.id);
+  // }
+
+  // filterTickets(): Ticket[] {
+  //   return this.tickets.filter(ticket => this.selectedTicketStates.includes(ticket.state.id));
+  // }
+
 }

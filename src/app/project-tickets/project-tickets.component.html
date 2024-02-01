@@ -14,7 +14,7 @@
     </thead>
       
     <tbody>
-      <tr *ngFor="let ticket of  tickets">
+      <tr *ngFor="let ticket of  filteredTickets">
         <td>{{ ticket.id }}</td>
         <td>
           <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
@@ -23,8 +23,14 @@
         <td>{{ ticket.responsible }}</td>
       </tr>
     </tbody>
-
   </table>
+
+  <div *ngFor="let ticket of ticketStates" class="field-checkbox">
+    <p-checkbox [label]="ticket.description" name="group" [value]="ticket.id"
+      (click)="filterTickets()"
+      [(ngModel)]="selectedTicketStates"></p-checkbox>
+  </div>
+
 </div>
 
 

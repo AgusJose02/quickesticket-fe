@@ -8,6 +8,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
+import { CheckboxModule } from 'primeng/checkbox';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { ProjectTicketsComponent } from './project-tickets/project-tickets.compo
 import { MyPageComponent } from './my-page/my-page.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
+import { TicketFilter } from './ticket-filter.js';
 
 
 @NgModule({
@@ -45,9 +47,11 @@ import { TicketFormComponent } from './ticket-form/ticket-form.component';
     DropdownModule,
     ButtonModule,
     MessagesModule,
+    CheckboxModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    TicketFilter,
   ],
   bootstrap: [AppComponent]
 })

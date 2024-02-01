@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Location } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { Project } from '../project.js';
@@ -18,7 +17,6 @@ export class ProjectComponent {
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
-    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -29,6 +27,9 @@ export class ProjectComponent {
   getProject(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.projectService.getProject(id)
-      .subscribe(project => this.project = project)
+      .subscribe(project => {
+         this.project = project;
+      })
   }
+
 }
