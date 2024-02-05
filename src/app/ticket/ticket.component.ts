@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { debounceTime, Subject, takeUntil } from 'rxjs';
 
 import { Ticket } from '../ticket.js';
@@ -21,8 +20,8 @@ export class TicketComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private ticketService: TicketService,
-    private location: Location,
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +38,7 @@ export class TicketComponent {
   }
 
   goBack(): void {
-    this.location.back();
+    this.router.navigate(['/projects', this.ticket?.project.id],)
   }
 
   getTicket(): void {
@@ -55,7 +54,7 @@ export class TicketComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.ticketService.deleteTicket(id)
       .subscribe(() => {
-        this.goBack();
+        this.goBack(); //TODO: La tabla de tickets no aparece
         this.ticketDeleted.emit(id); // TODO: Eliminar el ticket del array del listado de tickets en la pag anterior
       });
   }

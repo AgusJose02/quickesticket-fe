@@ -28,7 +28,7 @@ export class TicketFormComponent {
   endDate?: Date;
   dateValidation: boolean = true;
 
-  model = new TicketClass(0, 0, 1, null, '', null, 1, null, '', null);
+  model = new TicketClass(0, 0, 1, null, '', null, 1, 0, '', null);
 
   ticketStates: TicketState[] = [];
 
@@ -64,7 +64,9 @@ export class TicketFormComponent {
       this.model.responsible = this.ticket.responsible;
       this.model.beginning_date = '';
       this.begDate = new Date(this.ticket.beginning_date);
-      this.endDate = new Date(this.ticket.end_date);
+      if(this.ticket.end_date) {
+        this.endDate = new Date(this.ticket.end_date);
+      };
       this.model.state = this.ticket.state.id;
       this.model.total_hours = this.ticket.total_hours;
       this.model.title = this.ticket.title;

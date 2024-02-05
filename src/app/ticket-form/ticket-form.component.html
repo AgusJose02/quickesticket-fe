@@ -18,7 +18,7 @@
       <div class="form-group">
         <label for="beggining_date">Fecha de inicio</label>
         <p-calendar class="form-control" [(ngModel)]="this.begDate"
-          [showButtonBar]="true" [required]="true"
+          [showButtonBar]="true" (ngModelChange)="validateEndDate()" [required]="true"
           dateFormat="dd/mm/yy" name="beggining_date" #beggining_date="ngModel"></p-calendar>
         <div [hidden]="beggining_date.valid || beggining_date.pristine" class="alert alert-danger">
           Campo obligatorio

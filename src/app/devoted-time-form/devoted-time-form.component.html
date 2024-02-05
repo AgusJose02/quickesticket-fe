@@ -1,0 +1,51 @@
+<div class="container">
+  <div>
+
+    <h3>{{ ticket?.id }} - {{ ticket?.title }}</h3>
+    
+    <h1>Tiempo dedicado</h1>
+
+    <form (ngSubmit)="onSubmit()" #hoursForm="ngForm">
+      <div class="form-group">
+        <label for="date">Fecha</label>
+        <p-calendar class="form-control"
+          [(ngModel)]="model.date" [showButtonBar]="true" [required]="true" (ngModelChange)="validateDate()"
+          dateFormat="dd/mm/yy" name="date" #date="ngModel"></p-calendar>
+        <div [hidden]="date.valid || date.pristine" class="alert alert-danger">
+          Campo obligatorio
+        </div>
+        <div [hidden]="this.dateValidation" class="alert alert-danger">
+          {{ dateValidationMessage }}
+        </div>
+      </div>
+
+      {{this.dateValidation}}
+
+      <div class="form-group">
+        <label for="hours">Horas</label>
+        <p-inputNumber class="form-control" id="hours" name="hours" #hours="ngModel" [required]="true"
+          [(ngModel)]="model.amount" mode="decimal" inputId="hours" locale="de-DE"
+          [minFractionDigits]="2" [maxFractionDigits]="2"></p-inputNumber>
+        <div [hidden]="hours.valid || hours.pristine" class="alert alert-danger">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="client_hours">Horas Cliente</label>
+        <!-- <input type="text" class="form-control" id="client_hours" [(ngModel)]="model.client_time_amount" name="client_hours"> -->
+        <p-inputNumber class="form-control" id="client_hours" name="client_hours"
+          [(ngModel)]="model.client_time_amount" mode="decimal" inputId="client_hours" locale="de-DE" [minFractionDigits]="2"
+          [maxFractionDigits]="2"></p-inputNumber>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input type="text" class="form-control" id="description"  [(ngModel)]="model.description" name="description">
+      </div>
+
+      <button type="submit" class="btn btn-success" [disabled]="!hoursForm.form.valid || !dateValidation">Guardar</button>
+      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+</div>

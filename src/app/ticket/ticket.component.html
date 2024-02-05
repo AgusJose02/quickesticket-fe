@@ -14,7 +14,7 @@
     <h2>#{{ ticket?.id }} - {{ ticket?.title }}</h2>
     <div *ngIf="updateTicket===false">
       <p-button label="Editar" (click)="updateTicket=true"></p-button>
-      <a href="" target="_blank" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
+      <a href="/tickets/{{ticket?.id}}/devoted-time" target="_self" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
       <p-button label="Borrar" (click)="deleteTicket()"></p-button>
     </div>
   </div>

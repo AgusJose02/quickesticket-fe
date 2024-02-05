@@ -9,6 +9,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { CheckboxModule } from 'primeng/checkbox';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { MyPageComponent } from './my-page/my-page.component';
 import { TicketComponent } from './ticket/ticket.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
 import { TicketFilter } from './ticket-filter.js';
+import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.component';
 
 
 @NgModule({
@@ -35,7 +37,8 @@ import { TicketFilter } from './ticket-filter.js';
     ProjectTicketsComponent,
     MyPageComponent,
     TicketComponent,
-    TicketFormComponent
+    TicketFormComponent,
+    DevotedTimeFormComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { TicketFilter } from './ticket-filter.js';
     ButtonModule,
     MessagesModule,
     CheckboxModule,
+    InputNumberModule,
   ],
   providers: [
     provideClientHydration(),

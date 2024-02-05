@@ -1,8 +1,8 @@
 <p>{{project?.description}}</p>
 <p>Fecha de creación: {{project?.creation_date}}</p>
 
-<div *ngIf="tickets">
-  <table *ngIf="tickets.length > 0" class="table">
+<div *ngIf="tickets.length && tickets.length > 0">
+  <table class="table">
 
     <thead>
       <tr>
