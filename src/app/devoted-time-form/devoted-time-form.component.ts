@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { DevotedTime } from '../devoted-time-class.js';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
+import { DevotedTime } from '../devoted-time-class.js';
+import { DevotedTime as DevotedTimeInterface } from '../devoted-time.js';
 import { TicketService } from '../ticket.service.js';
 import { DevotedTimeService } from '../devoted-time.service.js';
 import { Ticket } from '../ticket.js';
@@ -14,11 +15,15 @@ import { Ticket } from '../ticket.js';
 })
 export class DevotedTimeFormComponent {
 
+  currentUrl = this.route.snapshot.url[3].path;
+
   ticketId = Number(this.route.snapshot.paramMap.get('ticketId'));  
   ticket?: Ticket;
 
   dateValidation: boolean = true;
   dateValidationMessage: string = '';
+
+  timeEntry?: DevotedTimeInterface;
 
   model = new DevotedTime(
     0, //id
@@ -39,11 +44,20 @@ export class DevotedTimeFormComponent {
 
   ngOnInit(): void{
     this.getTicket();
+
+    if (this.currentUrl === 'update') {
+      this.getExistingTimeEntry();
+    }
   }
 
   onSubmit(): void {
-    this.devotedTimeService.addDevotedTime(this.model, this.ticketId)
-      .subscribe(() => this.router.navigate(['/tickets', this.ticketId]));
+    if (this.currentUrl === 'update') {
+      this.devotedTimeService.updateDevotedTime(this.model,this.ticketId)
+        .subscribe(() => this.router.navigate(['/tickets', this.ticketId, 'devoted-time']))
+    } if (this.currentUrl === 'new') {
+      this.devotedTimeService.addDevotedTime(this.model, this.ticketId)
+        .subscribe(() => this.router.navigate(['/tickets', this.ticketId]));
+    }
   }
 
   onCancel(): void {
@@ -55,6 +69,22 @@ export class DevotedTimeFormComponent {
       .subscribe(ticket => {
         this.ticket = ticket;
       });
+  }
+
+  getExistingTimeEntry(): void {  
+    let id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.devotedTimeService.getDevotedTime(id,this.ticketId)
+      .subscribe(time => {
+        this.model.id = time.id;
+        this.model.ticket = Number(time.ticket);
+        this.model.date = new Date(time.date);
+        this.model.description = time.description;
+        this.model.amount = time.amount;
+        if (time.client_time_amount) {
+          this.model.client_time_amount = time.client_time_amount;
+        };
+      })
   }
 
   validateDate(): void {
@@ -76,11 +106,9 @@ export class DevotedTimeFormComponent {
           this.dateValidationMessage = 'La fecha es posterior a la fecha de fin del ticket';
           } else { // No hay fecha de fin
             this.dateValidation = true
-            }
+          }
         } 
-      // } if (devotedTimeDate >= beginningDate && devotedTimeDate <= endDate) {
-      //   this.dateValidation = true;
-        }
+      }
     }
   }
 

@@ -24,6 +24,8 @@ import { TicketComponent } from './ticket/ticket.component';
 import { TicketFormComponent } from './ticket-form/ticket-form.component';
 import { TicketFilter } from './ticket-filter.js';
 import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.component';
+import { DevotedTimeListComponent } from './devoted-time-list/devoted-time-list.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -38,7 +40,9 @@ import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.
     MyPageComponent,
     TicketComponent,
     TicketFormComponent,
-    DevotedTimeFormComponent
+    DevotedTimeFormComponent,
+    DevotedTimeListComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

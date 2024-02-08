@@ -1,37 +1,41 @@
-<p>{{project?.description}}</p>
-<p>Fecha de creación: {{project?.creation_date}}</p>
+<div class="container">
 
-<div *ngIf="tickets.length && tickets.length > 0">
-  <table class="table">
+  <h4 *ngIf="tickets.length === 0">{{project?.name}} aún no tiene tickets!</h4>
 
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Título</th>
-        <th>Estado</th>
-        <th>Responsable</th>
-      </tr>
-    </thead>
-      
-    <tbody>
-      <tr *ngFor="let ticket of  filteredTickets">
-        <td>{{ ticket.id }}</td>
-        <td>
-          <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
-        </td>
-        <td>{{ ticket.state.description }}</td>
-        <td>{{ ticket.responsible }}</td>
-      </tr>
-    </tbody>
-  </table>
 
-  <div *ngFor="let ticket of ticketStates" class="field-checkbox">
-    <p-checkbox [label]="ticket.description" name="group" [value]="ticket.id"
-      (click)="filterTickets()"
-      [(ngModel)]="selectedTicketStates"></p-checkbox>
+  <div *ngIf="tickets.length && tickets.length > 0">
+    <table class="table">
+  
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Título</th>
+          <th>Estado</th>
+          <th>Responsable</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let ticket of  filteredTickets">
+          <td>{{ ticket.id }}</td>
+          <td>
+            <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
+          </td>
+          <td>{{ ticket.state.description }}</td>
+          <td>{{ ticket.responsible }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngFor="let ticket of ticketStates" class="field-checkbox">
+      <p-checkbox [label]="ticket.description" name="group" [value]="ticket.id" (click)="filterTickets()"
+        [(ngModel)]="selectedTicketStates"></p-checkbox>
+    </div>
+  
   </div>
-
 </div>
+
+
 
 
   

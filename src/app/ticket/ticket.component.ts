@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { debounceTime, Subject, takeUntil } from 'rxjs';
+import { Location } from '@angular/common';
 
 import { Ticket } from '../ticket.js';
 import { TicketService } from '../ticket.service.js';
-import { OutgoingMessage } from 'http';
+import { TicketDeletionService } from '../ticket-deletion.service.js';
 
 @Component({
   selector: 'app-ticket',
@@ -14,14 +14,15 @@ import { OutgoingMessage } from 'http';
 export class TicketComponent {
   @Input() ticket?: Ticket;
 
-  @Output()  ticketDeleted = new EventEmitter<number>();
+  updateTicket = false;
 
-  updateTicket = false
+  totalTime = 0;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
+    private location: Location,
     private ticketService: TicketService,
+    private tikcetDeletionService: TicketDeletionService,
   ) { }
 
   ngOnInit(): void {
@@ -37,8 +38,12 @@ export class TicketComponent {
     this.updateTicket = false;
   }
 
-  goBack(): void {
-    this.router.navigate(['/projects', this.ticket?.project.id],)
+  setTotalTime(): void {
+    if (this.ticket) {
+      if (this.ticket.total_hours) {
+        this.totalTime = this.ticket.total_hours;
+      }
+    }
   }
 
   getTicket(): void {
@@ -47,6 +52,7 @@ export class TicketComponent {
       .subscribe(ticket => {
         this.ticket = ticket;
         this.updateTicket = false; // para que al editar se oculte el formulario
+        this.setTotalTime()
       })
   }
 
@@ -54,8 +60,8 @@ export class TicketComponent {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.ticketService.deleteTicket(id)
       .subscribe(() => {
-        this.goBack(); //TODO: La tabla de tickets no aparece
-        this.ticketDeleted.emit(id); // TODO: Eliminar el ticket del array del listado de tickets en la pag anterior
+        this.tikcetDeletionService.notifyTicketDeleted(id)
+        this.location.back();
       });
   }
 

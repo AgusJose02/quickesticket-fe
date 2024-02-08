@@ -1,0 +1,41 @@
+<div class="container">
+  <h2>Tiempo dedicado a {{ ticket?.title}} </h2>
+  <a href="/tickets/{{ticketId}}" target="_self" rel="noopener noreferrer"
+    class="p-button font-bold">Volver</a>
+
+  <h4 *ngIf="timeEntries.length === 0">Aún no hay tiempo dedicado a este ticket!</h4>
+
+
+  <div class="time-entries-list" *ngIf="timeEntries.length > 0 && ticket">
+    <table class="table">
+
+      <thead>
+        <tr>
+          <th>ID Ticket</th>
+          <th>Título Ticket</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
+          <th>Cantidad</th>
+          <th>Editar</th>
+          <th>Eliminar</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let time of  timeEntries">
+          <td>{{ ticket.id }}</td>
+          <td>{{ ticket.title }}</td>
+          <td>{{ time.description }}</td>
+          <td>{{ time.date | date:'dd/MM/yyyy'}}</td>
+          <td>{{ time.amount }}</td>
+          <td>
+            <p-button (click)="updateTimeEntry(time.id)"></p-button>
+          </td>
+          <td>
+            <p-button (click)="deleteTimeEntry(time.id)"></p-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

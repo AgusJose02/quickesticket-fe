@@ -4,6 +4,7 @@
   </div>
 
   <div class="tickets-list" *ngIf="tickets">
+    <h4 *ngIf="tickets.length === 0">No tenés tickets asignados</h4>
     <table *ngIf="tickets.length > 0" class="table">
   
       <thead>
@@ -12,7 +13,6 @@
           <th>Título</th>
           <th>Estado</th>
           <th>Proyecto</th>
-          <th>Tiempo dedicado</th>
         </tr>
       </thead>
   
@@ -26,7 +26,6 @@
           <td>
             <a href="/projects/{{ticket.project.id}}">{{ ticket.project.name }}</a>
           </td>
-          <td>{{ ticket.total_hours }}</td>
         </tr>
       </tbody>
   

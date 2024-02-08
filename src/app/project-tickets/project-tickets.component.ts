@@ -5,6 +5,7 @@ import { Ticket } from '../ticket.js';
 import { TicketState } from '../ticket-state.js';
 import { TicketStateService } from '../ticket-state.service.js';
 import { TicketFilter } from '../ticket-filter.js';
+import { TicketDeletionService } from '../ticket-deletion.service.js';
 
 
 @Component({
@@ -23,11 +24,13 @@ export class ProjectTicketsComponent {
 
   constructor (
     private ticketStateService: TicketStateService,
+    private ticketDeletionService: TicketDeletionService,
     private ticketFilter: TicketFilter
   ) { }
 
   ngOnInit(): void {
     this.getTicketStates();
+    this.subscribeToTicketDeletions();
     
     if(this.project) {
       this.tickets = this.project?.tickets
@@ -46,5 +49,13 @@ export class ProjectTicketsComponent {
       this.filteredTickets,
       this.selectedTicketStates
     );
+  }
+
+  private subscribeToTicketDeletions(): void {
+    this.ticketDeletionService.onTicketDeletion()
+      .subscribe((deletedTicketId: number) => {
+        this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
+        this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+      });
   }
 }

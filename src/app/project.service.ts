@@ -48,7 +48,7 @@ export class ProjectService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  /** PUT: update the project on the server */
   updateProject(project: ProjectClass): Observable<any> {
     const url = `${this.projectsUrl}/${project.id}`;
 

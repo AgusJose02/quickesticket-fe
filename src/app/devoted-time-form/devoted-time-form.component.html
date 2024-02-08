@@ -5,6 +5,8 @@
     
     <h1>Tiempo dedicado</h1>
 
+    {{this.model | json }}
+
     <form (ngSubmit)="onSubmit()" #hoursForm="ngForm">
       <div class="form-group">
         <label for="date">Fecha</label>
@@ -18,8 +20,6 @@
           {{ dateValidationMessage }}
         </div>
       </div>
-
-      {{this.dateValidation}}
 
       <div class="form-group">
         <label for="hours">Horas</label>
