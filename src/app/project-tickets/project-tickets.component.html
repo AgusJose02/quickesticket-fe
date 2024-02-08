@@ -2,6 +2,7 @@
 
   <h4 *ngIf="tickets.length === 0">{{project?.name}} aún no tiene tickets!</h4>
 
+  <p-messages [(value)]="messages"></p-messages>
 
   <div *ngIf="tickets.length && tickets.length > 0">
     <table class="table">

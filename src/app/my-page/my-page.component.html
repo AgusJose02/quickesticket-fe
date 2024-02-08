@@ -3,6 +3,9 @@
     <h2>Mis tickets</h2>
   </div>
 
+  <p-messages [(value)]="messages"></p-messages>
+
+
   <div class="tickets-list" *ngIf="tickets">
     <h4 *ngIf="tickets.length === 0">No tenés tickets asignados</h4>
     <table *ngIf="tickets.length > 0" class="table">

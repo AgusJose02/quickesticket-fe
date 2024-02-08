@@ -5,7 +5,7 @@ import { DevotedTimeService } from '../devoted-time.service.js';
 import { DevotedTime } from '../devoted-time.js';
 import { Ticket } from '../ticket.js';
 import { TicketService } from '../ticket.service.js';
-import { time } from 'console';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-devoted-time-list',
@@ -24,7 +24,7 @@ export class DevotedTimeListComponent {
     private router: Router,
     private devotedTimeService: DevotedTimeService,
     private ticketService: TicketService,
-    // private location: Location,
+    private confirmationService: ConfirmationService,
   ) { }
 
   ngOnInit(): void {
@@ -42,9 +42,19 @@ export class DevotedTimeListComponent {
       .subscribe(ticket => this.ticket = ticket);
   }
 
+  // deleteTimeEntry(timeEntryId: number): void {
+  //   this.devotedTimeService.deleteDevotedTime(timeEntryId, this.ticketId)
+  //     .subscribe(() => this.deleteTimeEntryFromArray(timeEntryId));
+  // }
+
   deleteTimeEntry(timeEntryId: number): void {
-    this.devotedTimeService.deleteDevotedTime(timeEntryId, this.ticketId)
-      .subscribe(() => this.deleteTimeEntryFromArray(timeEntryId));
+    this.confirmationService.confirm({
+      message: '¿Confirma que desea eliminar la entrada?',
+      accept: () => {
+        this.devotedTimeService.deleteDevotedTime(timeEntryId, this.ticketId)
+          .subscribe(() => this.deleteTimeEntryFromArray(timeEntryId));
+      }
+    });
   }
 
   deleteTimeEntryFromArray(id: number): void {

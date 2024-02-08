@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 import { Ticket } from '../ticket.js';
 import { TicketService } from '../ticket.service.js';
 import { TicketDeletionService } from '../ticket-deletion.service.js';
+import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-ticket',
@@ -23,6 +24,7 @@ export class TicketComponent {
     private location: Location,
     private ticketService: TicketService,
     private tikcetDeletionService: TicketDeletionService,
+    private confirmationService: ConfirmationService,
   ) { }
 
   ngOnInit(): void {
@@ -56,13 +58,27 @@ export class TicketComponent {
       })
   }
 
-  deleteTicket(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.ticketService.deleteTicket(id)
-      .subscribe(() => {
-        this.tikcetDeletionService.notifyTicketDeleted(id)
-        this.location.back();
-      });
-  }
+  // deleteTicket(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id'));
+  //   this.ticketService.deleteTicket(id)
+  //     .subscribe(() => {
+  //       this.tikcetDeletionService.notifyTicketDeleted(id)
+  //       this.location.back();
+  //     });
+  // }
 
+  deleteTicket() {
+    this.confirmationService.confirm({
+      message: '¿Confirma que desea eliminar el ticket? Se perderán su tiempo dedicado.',
+      accept: () => {
+        const id = Number(this.route.snapshot.paramMap.get('id'));
+        this.ticketService.deleteTicket(id)
+          .subscribe(() => {
+            this.tikcetDeletionService.notifyTicketDeleted(id)
+            this.location.back();
+          });
+      }
+    });
+  }
 }
+

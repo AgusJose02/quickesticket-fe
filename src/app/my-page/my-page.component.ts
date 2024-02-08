@@ -5,6 +5,8 @@ import { TicketState } from '../ticket-state.js';
 import { TicketService } from '../ticket.service.js';
 import { TicketStateService } from '../ticket-state.service.js';
 import { TicketFilter } from '../ticket-filter.js';
+import { TicketDeletionService } from '../ticket-deletion.service.js';
+import { Message } from 'primeng/api/message.js';
 
 @Component({
   selector: 'app-my-page',
@@ -18,15 +20,20 @@ export class MyPageComponent {
   ticketStates: TicketState[] = [];
   selectedTicketStates: number[] = [1, 2, 3, 4];
 
+  messages: Message[] = [];
+
   constructor(
     private ticketService: TicketService,
     private ticketStateService: TicketStateService,
     private ticketFilter: TicketFilter,
+    private ticketDeletionService: TicketDeletionService,
+
   ) { }
 
   ngOnInit(): void {
     this.getTickets();
     this.getTicketStates();
+    this.subscribeToTicketDeletions();
   }  
 
   getTickets(): void {
@@ -50,13 +57,13 @@ export class MyPageComponent {
     );
   }
 
-  // assignFilteredTickets(): void {
-  //   this.filteredTickets = this.filterTickets();
-  //   this.filteredTickets.sort((a,b) => b.id - a.id);
-  // }
-
-  // filterTickets(): Ticket[] {
-  //   return this.tickets.filter(ticket => this.selectedTicketStates.includes(ticket.state.id));
-  // }
+  private subscribeToTicketDeletions(): void {
+    this.ticketDeletionService.onTicketDeletion()
+      .subscribe((deletedTicketId: number) => {
+        this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
+        this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+        this.messages.push({severity:'info', summary:'Info Message', detail:'Ticket eliminado correctamente'})
+      });
+  }
 
 }

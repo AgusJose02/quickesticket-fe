@@ -1,10 +1,9 @@
 <div class="container">
-  <!-- TODO: DARLE COLOR -->
-  <div class="alert alert-succes" role="alert" [hidden]="!submitted">
-    <h2>Proyecto actualizado!</h2>
-  </div> 
 
   <h1>Opciones</h1>
+
+  <h3>Editar</h3>
+
   <form *ngIf="project" (ngSubmit)="onSubmit()" #projectForm="ngForm">
 
     <div class="form-group">
@@ -25,9 +24,13 @@
   </form>
 
   <div>
-    <!-- AÑADIR AVISO DE QUE NO SE PUEDE BORRAR SI EL PROYECTO TIENE TICKETS -->
-    <p>En caso de que desees borrar el proyecto (se perderá toda la información sobre él):</p>
-    <button type="button" class="btn btn-danger" (click)="deleteProject()">Borrar proyecto</button>
+
+    <h3>Borrar</h3>
+
+    <p>En caso de que el proyecto tenga tickets cargados no podrá eliminarse.</p>
+
+    <p-confirmDialog header="Confirmar"></p-confirmDialog>
+    <p-button (click)="deleteProject()" [disabled]="projectHasTickets" label="Borrar proyecto"></p-button>
   </div>
 </div>
 

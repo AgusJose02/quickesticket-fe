@@ -5,8 +5,6 @@
     
     <h1>Tiempo dedicado</h1>
 
-    {{this.model | json }}
-
     <form (ngSubmit)="onSubmit()" #hoursForm="ngForm">
       <div class="form-group">
         <label for="date">Fecha</label>
@@ -33,7 +31,6 @@
 
       <div class="form-group">
         <label for="client_hours">Horas Cliente</label>
-        <!-- <input type="text" class="form-control" id="client_hours" [(ngModel)]="model.client_time_amount" name="client_hours"> -->
         <p-inputNumber class="form-control" id="client_hours" name="client_hours"
           [(ngModel)]="model.client_time_amount" mode="decimal" inputId="client_hours" locale="de-DE" [minFractionDigits]="2"
           [maxFractionDigits]="2"></p-inputNumber>

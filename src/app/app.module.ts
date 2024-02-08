@@ -10,6 +10,8 @@ import { ButtonModule } from 'primeng/button';
 import { MessagesModule } from 'primeng/messages';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -56,10 +58,12 @@ import { HomeComponent } from './home/home.component';
     MessagesModule,
     CheckboxModule,
     InputNumberModule,
+    ConfirmDialogModule,
   ],
   providers: [
     provideClientHydration(),
     TicketFilter,
+    ConfirmationService,
   ],
   bootstrap: [AppComponent]
 })

@@ -15,7 +15,8 @@
     <div *ngIf="updateTicket===false">
       <p-button label="Editar" (click)="updateTicket=true"></p-button>
       <a href="/tickets/{{ticket?.id}}/devoted-time/new" target="_self" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
-      <p-button label="Borrar" (click)="deleteTicket()"></p-button>
+      <p-confirmDialog header="Confirmar"></p-confirmDialog>
+      <p-button (click)="deleteTicket()" label="Borrar"></p-button>
     </div>
   </div>
 

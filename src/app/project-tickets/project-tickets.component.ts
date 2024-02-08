@@ -6,6 +6,7 @@ import { TicketState } from '../ticket-state.js';
 import { TicketStateService } from '../ticket-state.service.js';
 import { TicketFilter } from '../ticket-filter.js';
 import { TicketDeletionService } from '../ticket-deletion.service.js';
+import { Message } from 'primeng/api/message.js';
 
 
 @Component({
@@ -21,6 +22,8 @@ export class ProjectTicketsComponent {
 
   ticketStates: TicketState[] = [];
   selectedTicketStates: number[] = [1, 2, 3, 4];
+
+  messages: Message[] = []
 
   constructor (
     private ticketStateService: TicketStateService,
@@ -56,6 +59,7 @@ export class ProjectTicketsComponent {
       .subscribe((deletedTicketId: number) => {
         this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
         this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+        this.messages.push({severity:'info', summary:'Info Message', detail:'Ticket eliminado correctamente'})
       });
   }
 }

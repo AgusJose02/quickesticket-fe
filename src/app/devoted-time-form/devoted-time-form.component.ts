@@ -44,6 +44,7 @@ export class DevotedTimeFormComponent {
 
   ngOnInit(): void{
     this.getTicket();
+    this.validateDate();
 
     if (this.currentUrl === 'update') {
       this.getExistingTimeEntry();
