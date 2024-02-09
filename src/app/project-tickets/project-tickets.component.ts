@@ -32,11 +32,12 @@ export class ProjectTicketsComponent {
   ) { }
 
   ngOnInit(): void {
+    
     this.getTicketStates();
-    this.subscribeToTicketDeletions();
     
     if(this.project) {
       this.tickets = this.project?.tickets
+      this.subscribeToTicketDeletions(); // NO FUNCIONA
       this.filterTickets();
     }
   }
@@ -57,8 +58,16 @@ export class ProjectTicketsComponent {
   private subscribeToTicketDeletions(): void {
     this.ticketDeletionService.onTicketDeletion()
       .subscribe((deletedTicketId: number) => {
-        this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
-        this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+        // this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
+        // this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+
+        let index = this.tickets.findIndex(x => x.id == deletedTicketId);
+        if (index != -1)
+          {
+            this.tickets.splice(index, 1);
+            this.tickets = [...this.filteredTickets];
+          }
+
         this.messages.push({severity:'info', summary:'Info Message', detail:'Ticket eliminado correctamente'})
       });
   }

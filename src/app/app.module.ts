@@ -12,6 +12,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { TicketFilter } from './ticket-filter.js';
 import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.component';
 import { DevotedTimeListComponent } from './devoted-time-list/devoted-time-list.component';
 import { HomeComponent } from './home/home.component';
+import { ProjectWikiComponent } from './project-wiki/project-wiki.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { HomeComponent } from './home/home.component';
     TicketFormComponent,
     DevotedTimeFormComponent,
     DevotedTimeListComponent,
-    HomeComponent
+    HomeComponent,
+    ProjectWikiComponent
   ],
   imports: [
     BrowserModule,

@@ -3,10 +3,9 @@ import { Ticket } from "./ticket-class.js";
 export class Project {
   constructor(
     public id: number,
-    public name: string,
-    public description: string,
-    public wiki: string,
-    public creation_date: string,
-    // public tickets: Ticket[]
+    public name: string | null | undefined,
+    public description: string | null | undefined,
+    public wiki: string | null | undefined,
+    public creation_date: string | null | undefined,
   ) { }
 }

@@ -34,6 +34,9 @@ dependencies:
   express:
     specifier: ^4.18.2
     version: 4.18.2
+  primeicons:
+    specifier: ^6.0.1
+    version: 6.0.1
   primeng:
     specifier: ^17.4.0
     version: 17.4.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/forms@17.0.0)(rxjs@7.8.0)(zone.js@0.14.2)
@@ -5886,6 +5889,10 @@ packages:
   /pretty-bytes@5.6.0:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
     engines: {node: '>=6'}
+
+  /primeicons@6.0.1:
+    resolution: {integrity: sha512-KDeO94CbWI4pKsPnYpA1FPjo79EsY9I+M8ywoPBSf9XMXoe/0crjbUK7jcQEDHuc0ZMRIZsxH3TYLv4TUtHmAA==}
+    dev: false
 
   /primeng@17.4.0(@angular/common@17.0.0)(@angular/core@17.0.0)(@angular/forms@17.0.0)(rxjs@7.8.0)(zone.js@0.14.2):
     resolution: {integrity: sha512-fqIFXORQjfTZFepg1MBz/vqheMjHy104ugxuTT1BCzEbVsjc2bjVyedEsS3u+N7bYag7TLMvv/FjzbTAq6hzOw==}

@@ -1,10 +1,10 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ConfirmationService, Message } from 'primeng/api';
 
 import { Project } from '../project.js';
+import { Project as ProjectClass } from '../project-class.js';
 import { ProjectService } from '../project.service.js';
-import { ConfirmationService } from 'primeng/api';
 
 @Component({
   selector: 'app-edit-project-form',
@@ -15,9 +15,14 @@ import { ConfirmationService } from 'primeng/api';
 export class EditProjectFormComponent {
   @Input() project?: Project;
 
+  messages: Message[] = [];
+
+
   submitted = false;
 
   projectHasTickets = true;
+
+  model = new ProjectClass(0, undefined, undefined, undefined, undefined);
 
   constructor(
     private projectService: ProjectService,
@@ -27,17 +32,32 @@ export class EditProjectFormComponent {
   
   ngOnInit(): void {
     this.checkTickets();
+    this.assingProject();
   }
 
   onSubmit() {
     this.submitted = true;
-    this.updateProject()
+    this.messages = [{severity:'success', summary:'Completado', detail:'Proyecto actualizado correctamente'}];
+      
+    this.updateProject();
+    if (this.model.name && this.project) {
+      this.project.name = this.model.name;
+    } if (this.model.description && this.project) {
+      this.project.description = this.model.description;
+    }
   }
 
-  // TODO: SE PODRÍA UTILIZAR PATCH EN LUGAR DE PUT
+  assingProject(): void {
+    if (this.project) {
+      this.model.id = this.project.id;
+      this.model.name = this.project.name;
+      this.model.description = this.project.description;
+    }
+  }
+
   updateProject(): void {
     if (this.project) {
-      this.projectService.updateProject(this.project)
+      this.projectService.updateProject(this.model)
         .subscribe();
     }
   }
@@ -49,13 +69,6 @@ export class EditProjectFormComponent {
       }
     }
   }
-
-  // deleteProject(): void {
-  //   if (this.project) {
-  //     this.projectService.deleteProject(this.project.id)
-  //     .subscribe(_ => this.router.navigate(['/projects']));
-  //   }
-  // }
 
   deleteProject() {
     this.confirmationService.confirm({

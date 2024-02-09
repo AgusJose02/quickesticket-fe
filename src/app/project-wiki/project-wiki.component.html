@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="wiki">
+    <h2>Wiki</h2>
+    <p-button *ngIf="!updateWiki" label="Editar wiki" (onClick)="onEdit()"></p-button>
+    <p-messages [(value)]="messages"></p-messages>
+
+    <p *ngIf="!project?.wiki && !updateWiki">
+      ¡Este proyecto no tiene wiki aún!
+    </p>
+    <p *ngIf="project?.wiki">{{ project?.wiki }}</p>
+
+    <form *ngIf="updateWiki" (ngSubmit)="onSubmit()" #wikiForm="ngForm">
+      <div class="form-group">
+        <label for="wiki">Editar wiki</label>
+        <textarea
+          class="form-control"
+          id="wiki"
+          name="wiki"
+          required
+          rows="5"
+          cols="30"
+          pInputTextarea
+          [(ngModel)]="model.wiki"
+          [maxlength]="255"
+        ></textarea>
+      </div>
+
+      <p-button
+        type="submit"
+        severity="success"
+        [disabled]="wikiForm.form.invalid"
+        >Guardar</p-button
+      >
+      <p-button type="button" severity="danger" (onClick)="onCancel()"
+        >Cancelar</p-button
+      >
+    </form>
+  </div>
+
+  <div class="info">
+    <h4>Descripción del proyecto</h4>
+    <p>{{ project?.description }}</p>
+
+    <h4>Fecha de creación</h4>
+    <p>{{ creationDate | date : "dd/MM/yyyy" }}</p>
+  </div>
+</div>

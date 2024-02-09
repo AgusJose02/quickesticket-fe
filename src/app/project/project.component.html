@@ -12,5 +12,6 @@
 
 <app-project-tickets *ngIf="section === 'tickets'" [project]="project"></app-project-tickets>
 <app-ticket-form *ngIf="section === 'new-ticket'" [project]="project" (cancel)="section = $event"></app-ticket-form>
+<app-project-wiki *ngIf="section === 'wiki'" [project]="project"></app-project-wiki>
 <app-edit-project-form *ngIf="section === 'settings'" [project]="project"></app-edit-project-form>
 

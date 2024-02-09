@@ -33,7 +33,7 @@ export class MyPageComponent {
   ngOnInit(): void {
     this.getTickets();
     this.getTicketStates();
-    this.subscribeToTicketDeletions();
+    this.subscribeToTicketDeletions(); // NO FUNCIONA
   }  
 
   getTickets(): void {
@@ -60,8 +60,16 @@ export class MyPageComponent {
   private subscribeToTicketDeletions(): void {
     this.ticketDeletionService.onTicketDeletion()
       .subscribe((deletedTicketId: number) => {
-        this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
-        this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+        // this.tickets = this.tickets.filter(ticket => ticket.id !== deletedTicketId);
+        // this.filteredTickets = this.filteredTickets.filter(ticket => ticket.id !== deletedTicketId);
+
+        let index = this.tickets.findIndex(x => x.id == deletedTicketId);
+        if (index != -1)
+          {
+            this.tickets.splice(index, 1);
+            this.tickets = [...this.filteredTickets];
+          }
+
         this.messages.push({severity:'info', summary:'Info Message', detail:'Ticket eliminado correctamente'})
       });
   }

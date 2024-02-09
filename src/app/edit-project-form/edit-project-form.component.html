@@ -2,13 +2,17 @@
 
   <h1>Opciones</h1>
 
+  <p-messages [(value)]="messages"></p-messages>
+
   <h3>Editar</h3>
+
+  {{ model | json }}
 
   <form *ngIf="project" (ngSubmit)="onSubmit()" #projectForm="ngForm">
 
     <div class="form-group">
       <label for="name">Nombre</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="project.name" name="name" #name="ngModel">
+      <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
       <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
         Campo obligatorio
       </div>
@@ -16,7 +20,7 @@
 
     <div class="form-group">
       <label for="description">Descripción</label>
-      <input type="text" class="form-control" id="description" [(ngModel)]="project.description" name="description">
+      <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description">
     </div>
     <button type="submit" class="btn btn-success"
       [disabled]="!projectForm.form.valid || projectForm.form.pristine">Editar proyecto</button>

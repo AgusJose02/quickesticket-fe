@@ -12,7 +12,15 @@ import { Project as ProjectClass } from '../project-class.js';
 export class ProjectFormComponent {
   @Output() cancel = new EventEmitter<boolean>();
 
-  model = new ProjectClass(0,'', '', 'wiki','2024-01-10');
+  model = new ProjectClass(
+    0, //id
+    '', //name
+    null, //description
+    null, //wiki
+    '' //creation_date
+  );
+
+  creationDate = new Date;
 
   submitted = false;
 
@@ -23,6 +31,8 @@ export class ProjectFormComponent {
 
   onSubmit() {
     this.submitted = true;
+
+    this.model.creation_date = this.creationDate.toDateString()
     
     this.projectService.addProject(this.model)
       .subscribe(
