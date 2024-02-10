@@ -1,41 +1,46 @@
 <div class="container">
-  <div class="list-header">
-    <h2>Mis tickets</h2>
+
+  
+  <div class="left">
+    <div class="list-header">
+      <h2>Mis tickets</h2>
+    </div>
+    <p-messages [(value)]="messages"></p-messages>
+    
+    <div class="tickets-list" *ngIf="tickets">
+      <h4 *ngIf="tickets.length === 0">No tenés tickets asignados</h4>
+      <table class="table" *ngIf="tickets.length > 0" class="table">
+    
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Estado</th>
+            <th>Proyecto</th>
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr *ngFor="let ticket of  filteredTickets">
+            <td>{{ ticket.id }}</td>
+            <td>
+              <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
+            </td>
+            <td>{{ ticket.state.description }}</td>
+            <td>
+              <a href="/projects/{{ticket.project.id}}">{{ ticket.project.name }}</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <p-messages [(value)]="messages"></p-messages>
-
-
-  <div class="tickets-list" *ngIf="tickets">
-    <h4 *ngIf="tickets.length === 0">No tenés tickets asignados</h4>
-    <table *ngIf="tickets.length > 0" class="table">
-  
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Título</th>
-          <th>Estado</th>
-          <th>Proyecto</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *ngFor="let ticket of  filteredTickets">
-          <td>{{ ticket.id }}</td>
-          <td>
-            <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
-          </td>
-          <td>{{ ticket.state.description }}</td>
-          <td>
-            <a href="/projects/{{ticket.project.id}}">{{ ticket.project.name }}</a>
-          </td>
-        </tr>
-      </tbody>
-  
-    </table>
-
-    <div *ngFor="let ticket of ticketStates" class="field-checkbox">
-      <p-checkbox [label]="ticket.description" name="group" [value]="ticket.id"
+  <div class="right">
+    <h3 class="filter-header">Filtros</h3>
+    <div class="check-container">
+      <p-checkbox class="checkbox" *ngFor="let ticket of ticketStates"
+        [label]="ticket.description" name="group" [value]="ticket.id"
         (click)="filterTickets()"
         [(ngModel)]="selectedTicketStates"></p-checkbox>
     </div>

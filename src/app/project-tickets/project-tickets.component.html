@@ -1,38 +1,47 @@
 <div class="container">
 
+  
   <h4 *ngIf="tickets.length === 0">{{project?.name}} aún no tiene tickets!</h4>
-
+  
   <p-messages [(value)]="messages"></p-messages>
-
-  <div *ngIf="tickets.length && tickets.length > 0">
-    <table class="table">
   
-      <thead>
-        <tr>
-          <th>ID</th>
-          <th>Título</th>
-          <th>Estado</th>
-          <th>Responsable</th>
-        </tr>
-      </thead>
-  
-      <tbody>
-        <tr *ngFor="let ticket of  filteredTickets">
-          <td>{{ ticket.id }}</td>
-          <td>
-            <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
-          </td>
-          <td>{{ ticket.state.description }}</td>
-          <td>{{ ticket.responsible }}</td>
-        </tr>
-      </tbody>
-    </table>
-  
-    <div *ngFor="let ticket of ticketStates" class="field-checkbox">
-      <p-checkbox [label]="ticket.description" name="group" [value]="ticket.id" (click)="filterTickets()"
-        [(ngModel)]="selectedTicketStates"></p-checkbox>
+  <div class="left">
+    <div class="tickets-list" *ngIf="tickets">
+    
+      <div *ngIf="tickets.length && tickets.length > 0">
+        <table class="table">
+          
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Estado</th>
+            <th>Responsable</th>
+          </tr>
+        </thead>
+        
+        <tbody>
+          <tr *ngFor="let ticket of  filteredTickets">
+            <td>{{ ticket.id }}</td>
+            <td>
+              <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
+            </td>
+            <td>{{ ticket.state.description }}</td>
+            <td>{{ ticket.responsible }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  
+  </div>
+  </div>
+
+  <div class="right">
+    <h3 class="filter-header">Filtros</h3>
+    <div class="check-container">
+        <p-checkbox class="checkbox" *ngFor="let ticket of ticketStates"
+          [label]="ticket.description" name="group" [value]="ticket.id" (click)="filterTickets()"
+          [(ngModel)]="selectedTicketStates"></p-checkbox>
+    </div>
   </div>
 </div>
 

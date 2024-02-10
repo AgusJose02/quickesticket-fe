@@ -41,8 +41,11 @@
         <input type="text" class="form-control" id="description"  [(ngModel)]="model.description" name="description">
       </div>
 
-      <button type="submit" class="btn btn-success" [disabled]="!hoursForm.form.valid || !dateValidation">Guardar</button>
-      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-success" [disabled]="!hoursForm.form.valid || !dateValidation">Guardar</button>
+        <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+      </div>
+
     </form>
   </div>
 </div>

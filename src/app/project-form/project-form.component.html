@@ -14,22 +14,18 @@
           Campo obligatorio
         </div>
       </div>
-      
 
       <div class="form-group">
         <label for="description">Descripción</label>
         <input type="text" class="form-control" id="description"
           [(ngModel)]="model.description" name="description">
       </div>
-      <button type="submit" class="btn btn-success"
-        [disabled]="!projectForm.form.valid">Crear proyecto</button>
-      <button type="button" class="btn btn-danger"
-        (click)="onCancel()">Cancelar</button>
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-success"
+          [disabled]="!projectForm.form.valid">Crear proyecto</button>
+        <button type="button" class="btn btn-danger"
+          (click)="onCancel()">Cancelar</button>
+      </div>
     </form>
   </div>
-
-  <!-- <div [hidden]="!submitted">
-    <h2>Proyecto creado!</h2>
-    <button type="button" class="btn btn-primary" (click)="submitted=false">Edit</button>
-   </div>-->
 </div> 

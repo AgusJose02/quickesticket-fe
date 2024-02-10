@@ -10,32 +10,56 @@
     <p-message severity="Succes" text="Ticket actualizado"></p-message>
   </div> -->
 
-  <div>
-    <h2>#{{ ticket?.id }} - {{ ticket?.title }}</h2>
-    <div *ngIf="updateTicket===false">
+  <div class="ticket-menu">
+    <h2 class="ticket-name">#{{ ticket?.id }} - {{ ticket?.title }}</h2>
+    <div class="ticket-buttons" *ngIf="updateTicket===false">
       <p-button label="Editar" (click)="updateTicket=true"></p-button>
       <a href="/tickets/{{ticket?.id}}/devoted-time/new" target="_self" rel="noopener noreferrer" class="p-button font-bold">Añadir tiempo dedicado</a>
-      <p-confirmDialog header="Confirmar"></p-confirmDialog>
       <p-button (click)="deleteTicket()" label="Borrar"></p-button>
     </div>
   </div>
+  <p-confirmDialog header="Confirmar"></p-confirmDialog>
 
   <div *ngIf="updateTicket===false">
-    <div>
-      <h4>Estado:</h4> <h4>{{ ticket?.state?.description }}</h4>
-      <h4>Responsable:</h4> <h4>{{ ticket?.responsible }}</h4>
-      <h4>Tiempo dedicado:</h4> <a href="/tickets/{{ticket?.id}}/devoted-time">{{ totalTime }}</a>
+
+    <div class="ticket-info">
+      <div class="left">
+        <div class="info-pairs">
+          <h4>Estado:</h4>
+          <h4>{{ ticket?.state?.description }}</h4>
+        </div>
+        <div class="info-pairs">
+          <h4>Responsable:</h4>
+          <h4>{{ ticket?.responsible }}</h4>
+        </div>
+        <div class="info-pairs">
+          <h4>Tiempo dedicado:</h4>
+          <h4>
+            <a href="/tickets/{{ticket?.id}}/devoted-time">{{ totalTime }}</a>
+          </h4>
+        </div>
+      </div>
+      
+      <div class="right">
+        <div class="info-pairs">
+          <h4>Fecha de inicio:</h4>
+          <h4>{{ ticket?.beginning_date | date:'dd/MM/yyyy'}}</h4>
+        </div>
+        <div class="info-pairs">
+          <h4>Fecha de fin:</h4>
+          <h4>{{ ticket?.end_date | date:'dd/MM/yyyy'}}</h4>
+        </div>
+        <div class="info-pairs">
+          <h4>Creado por:</h4>
+          <h4>{{ ticket?.creator }}</h4>
+        </div>
+      </div>
     </div>
-    
-    <div>
-      <h4>Fecha de inicio:</h4> <h4>{{ ticket?.beginning_date | date:'dd/MM/yyyy'}}</h4>
-      <h4>Fecha de fin:</h4> <h4>{{ ticket?.end_date | date:'dd/MM/yyyy'}}</h4>
-      <h4>Creado por:</h4> <h4>{{ ticket?.creator }}</h4>
-    </div>
+
     
     <div>
       <h4>Descripción</h4>
-      <p>{{ ticket?.description }}</p>
+      <p class="description">{{ ticket?.description }}</p>
     </div>
   </div>
 

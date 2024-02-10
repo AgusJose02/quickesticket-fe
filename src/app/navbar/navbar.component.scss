@@ -5,19 +5,34 @@ $navbar-height: 60px;
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: $navbar-primary-color;
-  padding: 0 20px;
+  padding: 0px;
   margin: 0 0px;
   height: $navbar-height;
   color: #fff;
+  border-radius: 0px;
+  border: 0px;
 
   &-logo {
+    // border-style: solid;
+    width: 33%;
     img {
       max-height: 100%;
       width: 10%;
+      margin-left: 20px;
+      
     }
+  }
+
+  &-title {
+    // border-style: solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 100%;
+    width: 33%;
   }
 
   &-links {
@@ -25,21 +40,33 @@ $navbar-height: 60px;
       list-style-type: none;
       list-style-type: none;
       margin: 0;
-      padding: 15px;
+      padding: 0px;
+      height: 100%;
+      // border-style: solid;
+      display: flex;
+      align-items: center;
+      width: 34%;
 
     li {
-      display: inline;
-      margin: 0 15px;
+      margin: 0px;
       font-size: 17px;
-
+      width: 100%;
+      height: 100%;
+      border-width: 0px;
+      &:hover {
+        background-color: $navbar-hover-color;
+      }
+      
       a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         text-decoration: none;
         color: #fff;
-        padding: 14px;
-
-        &:hover {
-          background-color: $navbar-hover-color;
-        }
+        padding-left: 15px;
+        padding-right: 15px;
+        width: 100%;
+        height: 100%;
       }
     }
   }

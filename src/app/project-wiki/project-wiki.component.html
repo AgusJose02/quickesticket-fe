@@ -7,7 +7,7 @@
     <p *ngIf="!project?.wiki && !updateWiki">
       ¡Este proyecto no tiene wiki aún!
     </p>
-    <p *ngIf="project?.wiki">{{ project?.wiki }}</p>
+    <p class="description" *ngIf="project?.wiki">{{ project?.wiki }}</p>
 
     <form *ngIf="updateWiki" (ngSubmit)="onSubmit()" #wikiForm="ngForm">
       <div class="form-group">
@@ -25,15 +25,17 @@
         ></textarea>
       </div>
 
-      <p-button
-        type="submit"
-        severity="success"
-        [disabled]="wikiForm.form.invalid"
-        >Guardar</p-button
-      >
-      <p-button type="button" severity="danger" (onClick)="onCancel()"
-        >Cancelar</p-button
-      >
+      <div class="form-buttons">
+        <p-button
+          type="submit"
+          severity="success"
+          [disabled]="wikiForm.form.invalid"
+          >Guardar</p-button
+        >
+        <p-button type="button" severity="danger" (onClick)="onCancel()"
+          >Cancelar</p-button
+        >
+      </div>
     </form>
   </div>
 

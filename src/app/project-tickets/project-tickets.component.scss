@@ -1,0 +1,56 @@
+.container {
+  display: flex;
+  margin: 0px;
+}
+
+.left {
+  // border-style: solid;
+  // border-color: red;
+  width: 80%;
+}
+
+.right {
+  // border-style: solid;
+  // border-color: blue;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+.checkbox {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.list-header {
+  // border-style: solid;
+  // border-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12vh;
+  margin: 0px;
+}
+
+.filter-header {
+  // border-style: solid;
+  // border-color: white;
+  display: flex;
+  align-items: center;
+  // justify-content: center;
+  margin: 0px;
+  // height: 12vh;
+  // padding-top: 12px;
+  padding-bottom: 6px;
+}
+
+.tickets-list {
+  // display: flex;
+  align-items: start;
+}
+
+.table {
+
+  margin-right: 20px;
+}

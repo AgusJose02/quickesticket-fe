@@ -45,12 +45,12 @@
         <label for="description">Descripción</label>
         <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description">
       </div>
-<!-- 
-      <p>{{ model | json }}</p>
-      <p>{{ begDate }} {{ endDate }}</p> -->
 
-      <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid || !dateValidation">{{ buttonLabel }}</button>
-      <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid || !dateValidation">{{ buttonLabel }}</button>
+        <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
+      </div>
+
     </form>
   </div>
 </div>
