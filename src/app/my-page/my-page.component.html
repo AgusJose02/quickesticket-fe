@@ -37,7 +37,7 @@
   </div>
 
   <div class="right">
-    <h3 class="filter-header">Filtros</h3>
+    <h3 class="filter-header" *ngIf="tickets.length > 0">Filtros</h3>
     <div class="check-container">
       <p-checkbox class="checkbox" *ngFor="let ticket of ticketStates"
         [label]="ticket.description" name="group" [value]="ticket.id"

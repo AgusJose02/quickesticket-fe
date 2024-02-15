@@ -96,6 +96,8 @@ export class TicketFormComponent {
     this.model.beginning_date = this.begDate.toDateString();
     if (this.endDate){
       this.model.end_date = this.endDate?.toDateString()
+    } else {
+      this.model.end_date = null;
     }
 
     if(this.currentUrl === 'projects') {

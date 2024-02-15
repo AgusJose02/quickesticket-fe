@@ -1,0 +1,28 @@
+.container {
+  display: flex; 
+}
+
+.info {
+  max-width: 20%;
+  margin-top: 20px;
+
+  h4 {
+    margin-top: 0px;
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+}
+
+.wiki {
+  width: 80%;
+  padding-right: 20px;
+
+  &-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+}

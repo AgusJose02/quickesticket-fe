@@ -5,7 +5,6 @@
     <h1 *ngIf="currentUrl==='projects'">Nuevo ticket de {{ project?.name }}</h1>
     <h1 *ngIf="currentUrl==='tickets'">Editar ticket</h1>
 
-
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="form-group">
         <label for="title">Título</label>

@@ -1,7 +1,9 @@
 <div class="container">
   <div class="wiki">
-    <h2>Wiki</h2>
-    <p-button *ngIf="!updateWiki" label="Editar wiki" (onClick)="onEdit()"></p-button>
+    <div class="wiki-menu">
+      <h2>Wiki</h2>
+      <p-button *ngIf="!updateWiki" label="Editar wiki" (onClick)="onEdit()"></p-button>
+    </div>
     <p-messages [(value)]="messages"></p-messages>
 
     <p *ngIf="!project?.wiki && !updateWiki">
