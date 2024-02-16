@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 
 import { Ticket } from '../ticket.js';
 import { TicketService } from '../ticket.service.js';
@@ -21,7 +20,7 @@ export class TicketComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private location: Location,
+    private router: Router,
     private ticketService: TicketService,
     private tikcetDeletionService: TicketDeletionService,
     private confirmationService: ConfirmationService,
@@ -69,13 +68,13 @@ export class TicketComponent {
 
   deleteTicket() {
     this.confirmationService.confirm({
-      message: '¿Confirma que desea eliminar el ticket? Se perderán su tiempo dedicado.',
+      message: '¿Confirma que desea eliminar el ticket? Se perderá su tiempo dedicado.',
       accept: () => {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.ticketService.deleteTicket(id)
           .subscribe(() => {
             this.tikcetDeletionService.notifyTicketDeleted(id)
-            this.location.back();
+            this.router.navigate(['/projects', this.ticket?.project.id])
           });
       }
     });

@@ -89,6 +89,7 @@ export class DevotedTimeFormComponent {
   }
 
   validateDate(): void {
+    this.dateValidation = true;
     if (this.ticket) {
       let devotedTimeDate = this.model.date
         .setHours(0,0,0,0);
