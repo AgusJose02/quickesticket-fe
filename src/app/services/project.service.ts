@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of ,catchError, map, tap, Subject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Project } from './project.js';
-import { Project as ProjectClass } from './project-class.js';
+import { Project } from '../entities/project.js';
+import { Project as ProjectClass } from '../classes/project-class.js';
 
 @Injectable({
   providedIn: 'root'

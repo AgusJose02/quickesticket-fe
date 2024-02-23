@@ -1,8 +1,8 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { ProjectService } from '../project.service.js';
-import { Project as ProjectClass } from '../project-class.js';
+import { ProjectService } from '../../services/project.service.js';
+import { Project as ProjectClass } from '../../classes/project-class.js';
 
 @Component({
   selector: 'app-project-form',

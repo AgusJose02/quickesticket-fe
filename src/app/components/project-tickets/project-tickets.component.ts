@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
-import { Project } from '../project.js';
-import { Ticket } from '../ticket.js';
-import { TicketState } from '../ticket-state.js';
-import { TicketStateService } from '../ticket-state.service.js';
-import { TicketFilter } from '../ticket-filter.js';
-import { TicketDeletionService } from '../ticket-deletion.service.js';
+import { Project } from '../../entities/project.js';
+import { Ticket } from '../../entities/ticket.js';
+import { TicketState } from '../../entities/ticket-state.js';
+import { TicketStateService } from '../../services/ticket-state.service.js';
+import { TicketFilter } from '../../providers/ticket-filter.js';
+import { TicketDeletionService } from '../../services/ticket-deletion.service.js';
 import { Message } from 'primeng/api/message.js';
 
 

@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { DevotedTime } from '../devoted-time-class.js';
-import { DevotedTime as DevotedTimeInterface } from '../devoted-time.js';
-import { TicketService } from '../ticket.service.js';
-import { DevotedTimeService } from '../devoted-time.service.js';
-import { Ticket } from '../ticket.js';
+import { DevotedTime } from '../../classes/devoted-time-class.js';
+import { DevotedTime as DevotedTimeInterface } from '../../entities/devoted-time.js';
+import { TicketService } from '../../services/ticket.service.js';
+import { DevotedTimeService } from '../../services/devoted-time.service.js';
+import { Ticket } from '../../entities/ticket.js';
 
 @Component({
   selector: 'app-devoted-time-form',

@@ -16,20 +16,20 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProjectComponent } from './project/project.component';
-import { ProjectsListComponent } from './projects-list/projects-list.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { ProjectFormComponent } from './project-form/project-form.component';
-import { EditProjectFormComponent } from './edit-project-form/edit-project-form.component';
-import { ProjectTicketsComponent } from './project-tickets/project-tickets.component';
-import { MyPageComponent } from './my-page/my-page.component';
-import { TicketComponent } from './ticket/ticket.component';
-import { TicketFormComponent } from './ticket-form/ticket-form.component';
-import { TicketFilter } from './ticket-filter.js';
-import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.component';
-import { DevotedTimeListComponent } from './devoted-time-list/devoted-time-list.component';
-import { HomeComponent } from './home/home.component';
-import { ProjectWikiComponent } from './project-wiki/project-wiki.component';
+import { ProjectComponent } from './components/project/project.component';
+import { ProjectsListComponent } from './components/projects-list/projects-list.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { ProjectFormComponent } from './components/project-form/project-form.component';
+import { EditProjectFormComponent } from './components/edit-project-form/edit-project-form.component';
+import { ProjectTicketsComponent } from './components/project-tickets/project-tickets.component';
+import { MyPageComponent } from './components/my-page/my-page.component';
+import { TicketComponent } from './components/ticket/ticket.component';
+import { TicketFormComponent } from './components/ticket-form/ticket-form.component';
+import { TicketFilter } from './providers/ticket-filter.js';
+import { DevotedTimeFormComponent } from './components/devoted-time-form/devoted-time-form.component';
+import { DevotedTimeListComponent } from './components/devoted-time-list/devoted-time-list.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProjectWikiComponent } from './components/project-wiki/project-wiki.component';
 
 
 @NgModule({

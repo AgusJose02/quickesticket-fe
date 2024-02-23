@@ -2,9 +2,9 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/api';
 
-import { Project } from '../project.js';
-import { Project as ProjectClass } from '../project-class.js';
-import { ProjectService } from '../project.service.js';
+import { Project } from '../../entities/project.js';
+import { Project as ProjectClass } from '../../classes/project-class.js';
+import { ProjectService } from '../../services/project.service.js';
 
 @Component({
   selector: 'app-edit-project-form',

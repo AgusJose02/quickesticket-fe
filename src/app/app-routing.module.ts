@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ProjectsListComponent } from './projects-list/projects-list.component.js';
-import { ProjectComponent } from './project/project.component.js';
-import { MyPageComponent } from './my-page/my-page.component.js';
-import { TicketComponent } from './ticket/ticket.component.js';
-import { DevotedTimeFormComponent } from './devoted-time-form/devoted-time-form.component.js';
-import { DevotedTimeListComponent } from './devoted-time-list/devoted-time-list.component.js';
-import { HomeComponent } from './home/home.component.js';
+import { ProjectsListComponent } from './components/projects-list/projects-list.component.js';
+import { ProjectComponent } from './components/project/project.component.js';
+import { MyPageComponent } from './components/my-page/my-page.component.js';
+import { TicketComponent } from './components/ticket/ticket.component.js';
+import { DevotedTimeFormComponent } from './components/devoted-time-form/devoted-time-form.component.js';
+import { DevotedTimeListComponent } from './components/devoted-time-list/devoted-time-list.component.js';
+import { HomeComponent } from './components/home/home.component.js';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

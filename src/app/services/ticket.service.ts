@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Ticket } from './ticket.js';
-import { Ticket as TicketClass } from './ticket-class.js';
+import { Ticket } from '../entities/ticket.js';
+import { Ticket as TicketClass } from '../classes/ticket-class.js';
 
 @Injectable({
   providedIn: 'root'

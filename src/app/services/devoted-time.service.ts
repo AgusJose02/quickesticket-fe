@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { DevotedTime as DevotedTimeClass } from './devoted-time-class.js';
-import { DevotedTime } from './devoted-time.js';
+import { DevotedTime as DevotedTimeClass } from '../classes/devoted-time-class.js';
+import { DevotedTime } from '../entities/devoted-time.js';
 
 
 @Injectable({
