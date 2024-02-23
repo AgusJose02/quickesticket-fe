@@ -13,6 +13,7 @@ import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ConfirmationService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -62,6 +63,8 @@ import { ProjectWikiComponent } from './components/project-wiki/project-wiki.com
     CheckboxModule,
     InputNumberModule,
     ConfirmDialogModule,
+    InputTextareaModule,
+    InputTextModule,
   ],
   providers: [
     provideClientHydration(),

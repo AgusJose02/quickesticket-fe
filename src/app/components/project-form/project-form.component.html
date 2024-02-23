@@ -6,8 +6,9 @@
 
       <div class="form-group">
         <label for="name">Nombre</label>
-        <input type="text" class="form-control" id="name"
+        <input type="text" pInputText class="form-control" id="name"
           required
+          [maxlength]="25"
           [(ngModel)]="model.name" name="name"
           #name="ngModel">
         <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
@@ -17,7 +18,8 @@
 
       <div class="form-group">
         <label for="description">Descripción</label>
-        <input type="text" class="form-control" id="description"
+        <input type="text" pInputText class="form-control" id="description"
+          [maxlength]="75"
           [(ngModel)]="model.description" name="description">
       </div>
       <div class="form-buttons">

@@ -8,7 +8,10 @@
     <form (ngSubmit)="onSubmit()" #projectForm="ngForm">
       <div class="form-group">
         <label for="title">Título</label>
-        <input type="text" class="form-control" id="title" required [(ngModel)]="model.title" name="title" #title="ngModel">
+        <input type="text" pInputText class="form-control" id="title"
+          required
+          [maxlength]="75"
+          [(ngModel)]="model.title" name="title" #title="ngModel">
         <div [hidden]="title.valid || title.pristine" class="alert alert-danger">
           Campo obligatorio
         </div>
@@ -42,7 +45,6 @@
 
       <div class="form-group">
         <label for="description">Descripción</label>
-        <!-- <input type="text" class="form-control" id="description" [(ngModel)]="model.description" name="description"> -->
         <textarea class="form-control" id="description" name="description"
           rows="5" cols="30" pInputTextarea
           [(ngModel)]="model.description"
