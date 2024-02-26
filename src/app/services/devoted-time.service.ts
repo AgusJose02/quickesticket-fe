@@ -4,13 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { DevotedTime as DevotedTimeClass } from '../classes/devoted-time-class.js';
 import { DevotedTime } from '../entities/devoted-time.js';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DevotedTimeService {
-  private ticketUrl = 'http://localhost:3000/api/tickets';
+  private env: any = environment;
+
+  private ticketUrl = `${this.env.apiUrl}/tickets`;
   private devotedTimeDir = 'devoted-time';
 
   httpOptions = {

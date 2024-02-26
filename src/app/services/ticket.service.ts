@@ -4,12 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Ticket } from '../entities/ticket.js';
 import { Ticket as TicketClass } from '../classes/ticket-class.js';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketService {
-  private ticketsUrl = 'http://localhost:3000/api/tickets'
+  private env: any = environment;
+
+  private ticketsUrl = `${this.env.apiUrl}/tickets`;
   private newTicketSubject = new Subject<TicketClass>();
 
   newProject$ = this.newTicketSubject.asObservable(); // para que al crear nuevo proyecto se redirija a su página

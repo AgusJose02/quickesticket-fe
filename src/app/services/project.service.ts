@@ -4,12 +4,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Project } from '../entities/project.js';
 import { Project as ProjectClass } from '../classes/project-class.js';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
-  private projectsUrl = 'http://localhost:3000/api/projects';
+  private env: any = environment;
+
+  private projectsUrl = `${this.env.apiUrl}/projects`;
   private newProjectSubject = new Subject<ProjectClass>();
 
   newProject$ = this.newProjectSubject.asObservable(); // para que al crear nuevo proyecto se redirija a su página

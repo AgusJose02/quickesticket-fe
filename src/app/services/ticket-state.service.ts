@@ -3,12 +3,15 @@ import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { TicketState } from '../entities/ticket-state.js';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TicketStateService {
-  private ticketStatesUrl = 'http://localhost:3000/api/ticket-states'
+  private env: any = environment;
+
+  private ticketStatesUrl = `${this.env.apiUrl}/ticket-states`;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
