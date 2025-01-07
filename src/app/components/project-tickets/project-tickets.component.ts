@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 
-import { Project } from '../../entities/project.js';
-import { Ticket } from '../../entities/ticket.js';
-import { TicketState } from '../../entities/ticket-state.js';
+import { Project } from '../../interfaces/project.js';
+import { Ticket } from '../../interfaces/ticket.js';
+import { TicketState } from '../../interfaces/ticket-state.js';
 import { TicketStateService } from '../../services/ticket-state.service.js';
 import { TicketFilter } from '../../providers/ticket-filter.js';
 import { TicketDeletionService } from '../../services/ticket-deletion.service.js';

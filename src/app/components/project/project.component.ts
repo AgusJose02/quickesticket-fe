@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Project } from '../../entities/project.js';
+import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
 
 @Component({

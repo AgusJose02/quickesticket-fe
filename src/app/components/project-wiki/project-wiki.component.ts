@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Project } from '../../entities/project.js';
+import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
 import { Message } from 'primeng/api';
 import { Project as ProjectClass} from '../../classes/project-class.js';

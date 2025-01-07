@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Ticket } from '../entities/ticket.js';
+import { Ticket } from '../interfaces/ticket.js';
 import { Ticket as TicketClass } from '../classes/ticket-class.js';
 import { environment } from '../../environments/environment';
 

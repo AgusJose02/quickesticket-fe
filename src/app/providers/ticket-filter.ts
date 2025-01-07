@@ -1,4 +1,4 @@
-import { Ticket } from "../entities/ticket.js";
+import { Ticket } from "../interfaces/ticket.js";
 
 export class TicketFilter {
 

@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Project } from '../../entities/project.js';
-import { Ticket } from '../../entities/ticket.js';
+import { Project } from '../../interfaces/project.js';
+import { Ticket } from '../../interfaces/ticket.js';
 import { Ticket as TicketClass } from '../../classes/ticket-class.js';
 import { TicketService } from '../../services/ticket.service.js';
 import { TicketStateService } from '../../services/ticket-state.service.js';
-import { TicketState } from '../../entities/ticket-state.js';
+import { TicketState } from '../../interfaces/ticket-state.js';
 
 
 

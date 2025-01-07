@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { DevotedTimeService } from '../../services/devoted-time.service.js';
-import { DevotedTime } from '../../entities/devoted-time.js';
-import { Ticket } from '../../entities/ticket.js';
+import { DevotedTime } from '../../interfaces/devoted-time.js';
+import { Ticket } from '../../interfaces/ticket.js';
 import { TicketService } from '../../services/ticket.service.js';
 import { ConfirmationService } from 'primeng/api';
 

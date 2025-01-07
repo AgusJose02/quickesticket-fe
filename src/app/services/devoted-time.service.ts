@@ -3,7 +3,7 @@ import { Observable, of, catchError, tap, Subject } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { DevotedTime as DevotedTimeClass } from '../classes/devoted-time-class.js';
-import { DevotedTime } from '../entities/devoted-time.js';
+import { DevotedTime } from '../interfaces/devoted-time.js';
 import { environment } from '../../environments/environment';
 
 @Injectable({

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Ticket } from '../../entities/ticket.js';
+import { Ticket } from '../../interfaces/ticket.js';
 import { TicketService } from '../../services/ticket.service.js';
 import { TicketDeletionService } from '../../services/ticket-deletion.service.js';
 import { ConfirmationService } from 'primeng/api';

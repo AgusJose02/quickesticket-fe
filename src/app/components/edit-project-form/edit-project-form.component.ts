@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, Message } from 'primeng/api';
 
-import { Project } from '../../entities/project.js';
+import { Project } from '../../interfaces/project.js';
 import { Project as ProjectClass } from '../../classes/project-class.js';
 import { ProjectService } from '../../services/project.service.js';
 
