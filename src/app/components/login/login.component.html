@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="body">
+    <div class="login-header">
+      <img class="logo" src="assets/quickesticket-logo.png" alt="QuickesTicket Logo">
+      <h1>QuickesTicket</h1>
+      <h2>Login</h2>
+    </div>
+
+    <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+
+      <div class="form-group">
+        <label for="username">Nombre del usuario</label>
+        <input type="text" pInputText class="form-control" id="username" required [maxlength]="45" [(ngModel)]="model.username"
+          name="username" #username="ngModel">
+        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" pInputText class="form-control" id="password" required [maxlength]="255"
+          [(ngModel)]="model.password" name="password" #password="ngModel">
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-buttons">
+        <button type="submit" class="btn btn-success btn-full-width" size="large"
+          [disabled]="!loginForm.form.valid">Ingresar</button>
+      </div>
+
+    </form>
+
+  </div>
+</div>

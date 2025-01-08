@@ -31,6 +31,7 @@ import { DevotedTimeFormComponent } from './components/devoted-time-form/devoted
 import { DevotedTimeListComponent } from './components/devoted-time-list/devoted-time-list.component';
 import { HomeComponent } from './components/home/home.component';
 import { ProjectWikiComponent } from './components/project-wiki/project-wiki.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProjectWikiComponent } from './components/project-wiki/project-wiki.com
     DevotedTimeFormComponent,
     DevotedTimeListComponent,
     HomeComponent,
-    ProjectWikiComponent
+    ProjectWikiComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.body {
+  max-width: 300px;
+  width: 100%;
+}
+
+.login-header {
+  text-align: center;
+}
+
+.logo {
+  height: 130px;
+  margin-bottom: 10px;
+}
+
+.btn-full-width {
+  flex-grow: 1;
+  margin-top: 10px;
+}

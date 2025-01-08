@@ -8,9 +8,13 @@ import { TicketComponent } from './components/ticket/ticket.component.js';
 import { DevotedTimeFormComponent } from './components/devoted-time-form/devoted-time-form.component.js';
 import { DevotedTimeListComponent } from './components/devoted-time-list/devoted-time-list.component.js';
 import { HomeComponent } from './components/home/home.component.js';
+import { LoginComponent } from './components/login/login.component.js';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent},
   { path: 'projects', component: ProjectsListComponent },
   { path: 'projects/:id', component: ProjectComponent },
   { path: 'my-page', component: MyPageComponent },
@@ -18,6 +22,7 @@ const routes: Routes = [
   { path: 'tickets/:ticketId/devoted-time/new', component: DevotedTimeFormComponent },
   { path: 'tickets/:ticketId/devoted-time', component: DevotedTimeListComponent },
   { path: 'tickets/:ticketId/devoted-time/update/:id', component: DevotedTimeFormComponent },
+  { path: '**', redirectTo: 'login', pathMatch: 'full'},
 ];
 
 @NgModule({
