@@ -4,11 +4,13 @@ import { Router } from '@angular/router';
 import { User as UserClass } from '../../classes/user.js';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  selector: 'app-user-management',
+  templateUrl: './user-management.component.html',
+  styleUrl: './user-management.component.scss'
 })
-export class LoginComponent {
+export class UserManagementComponent {
+  secondPassword = null;
+
   constructor(
     private router: Router
   ){}
@@ -21,6 +23,10 @@ export class LoginComponent {
   );
 
   onSubmit() {
-    this.router.navigate(['/home'])
+
+  }
+
+  onCancel() {
+
   }
 }

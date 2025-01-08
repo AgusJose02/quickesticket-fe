@@ -9,12 +9,14 @@ import { DevotedTimeFormComponent } from './components/devoted-time-form/devoted
 import { DevotedTimeListComponent } from './components/devoted-time-list/devoted-time-list.component.js';
 import { HomeComponent } from './components/home/home.component.js';
 import { LoginComponent } from './components/login/login.component.js';
+import { UserManagementComponent } from './components/user-management/user-management.component.js';
 
 const routes: Routes = [
   
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
+  { path: 'user-management', component: UserManagementComponent },
   { path: 'projects', component: ProjectsListComponent },
   { path: 'projects/:id', component: ProjectComponent },
   { path: 'my-page', component: MyPageComponent },

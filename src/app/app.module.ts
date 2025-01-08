@@ -32,6 +32,7 @@ import { DevotedTimeListComponent } from './components/devoted-time-list/devoted
 import { HomeComponent } from './components/home/home.component';
 import { ProjectWikiComponent } from './components/project-wiki/project-wiki.component';
 import { LoginComponent } from './components/login/login.component';
+import { UserManagementComponent } from './components/user-management/user-management.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { LoginComponent } from './components/login/login.component';
     DevotedTimeListComponent,
     HomeComponent,
     ProjectWikiComponent,
-    LoginComponent
+    LoginComponent,
+    UserManagementComponent
   ],
   imports: [
     BrowserModule,
