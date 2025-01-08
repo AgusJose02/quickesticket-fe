@@ -19,3 +19,13 @@
 .btn-full-width {
   flex-grow: 1;
 }
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-label {
+  margin-right: 10px;
+  margin-bottom: 0px;
+}

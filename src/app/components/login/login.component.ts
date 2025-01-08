@@ -14,7 +14,6 @@ export class LoginComponent {
   ){}
 
   model = new UserClass(
-    0, //id
     null, //username
     null, //password
     null, //is_admin

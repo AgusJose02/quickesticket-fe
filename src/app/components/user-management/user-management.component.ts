@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { UserService } from '../../services/user.service.js';
 import { User as UserClass } from '../../classes/user.js';
 
 @Component({
@@ -10,20 +11,25 @@ import { User as UserClass } from '../../classes/user.js';
 })
 export class UserManagementComponent {
   secondPassword = null;
+  // isAdmin = false;
 
   constructor(
+    private userService: UserService,
     private router: Router
   ){}
 
   model = new UserClass(
-    0, //id
     null, //username
     null, //password
-    null, //is_admin
+    false, //is_admin
   );
 
   onSubmit() {
-
+    this.userService.addUser(this.model)
+      .subscribe(data => {
+        console.log('El usuario fue registrado correctamente.')
+        this.router.navigate(['/home']) //TEMPORAL
+      })
   }
 
   onCancel() {
