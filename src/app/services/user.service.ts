@@ -20,4 +20,8 @@ export class UserService {
   addUser(user: UserClass): Observable<any>{
     return this.http.post(`${this.usersUrl}`, user)
   }
+
+  login(user: UserClass): Observable<string>{
+    return this.http.post<string>(`${this.usersUrl}/login`, user)
+  }
 }

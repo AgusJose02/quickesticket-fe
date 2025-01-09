@@ -11,9 +11,12 @@ import { MessagesModule } from 'primeng/messages';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService } from 'primeng/api';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
+import { ToastModule } from 'primeng/toast';
+
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -69,11 +72,13 @@ import { UserManagementComponent } from './components/user-management/user-manag
     ConfirmDialogModule,
     InputTextareaModule,
     InputTextModule,
+    ToastModule,
   ],
   providers: [
     provideClientHydration(),
     TicketFilter,
     ConfirmationService,
+    MessageService,
   ],
   bootstrap: [AppComponent]
 })
