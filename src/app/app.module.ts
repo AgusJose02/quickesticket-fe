@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CalendarModule } from 'primeng/calendar';
@@ -36,6 +36,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProjectWikiComponent } from './components/project-wiki/project-wiki.component';
 import { LoginComponent } from './components/login/login.component';
 import { UserManagementComponent } from './components/user-management/user-management.component';
+import { authInterceptor } from './utils/auth.interceptor.js';
 
 
 @NgModule({
@@ -79,6 +80,9 @@ import { UserManagementComponent } from './components/user-management/user-manag
     TicketFilter,
     ConfirmationService,
     MessageService,
+    provideHttpClient(withInterceptors([
+      authInterceptor
+    ]))
   ],
   bootstrap: [AppComponent]
 })

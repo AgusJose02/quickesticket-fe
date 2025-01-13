@@ -29,7 +29,6 @@ export class LoginComponent {
       next: (token) => {
         this.router.navigate(['/home'])
         localStorage.setItem('token', token)
-        console.log(token)
       },
       error: (e: HttpErrorResponse) => {
         this.errorHandlerService.errorHandler(e)

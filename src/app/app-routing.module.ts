@@ -10,20 +10,21 @@ import { DevotedTimeListComponent } from './components/devoted-time-list/devoted
 import { HomeComponent } from './components/home/home.component.js';
 import { LoginComponent } from './components/login/login.component.js';
 import { UserManagementComponent } from './components/user-management/user-management.component.js';
+import { authGuard } from './utils/auth.guard.js';
 
 const routes: Routes = [
   
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'user-management', component: UserManagementComponent },
-  { path: 'projects', component: ProjectsListComponent },
-  { path: 'projects/:id', component: ProjectComponent },
-  { path: 'my-page', component: MyPageComponent },
-  { path: 'tickets/:id', component: TicketComponent },
-  { path: 'tickets/:ticketId/devoted-time/new', component: DevotedTimeFormComponent },
-  { path: 'tickets/:ticketId/devoted-time', component: DevotedTimeListComponent },
-  { path: 'tickets/:ticketId/devoted-time/update/:id', component: DevotedTimeFormComponent },
+  { path: 'home', component: HomeComponent, canActivate: [authGuard] },
+  { path: 'user-management', component: UserManagementComponent, canActivate: [authGuard] },
+  { path: 'projects', component: ProjectsListComponent, canActivate: [authGuard] },
+  { path: 'projects/:id', component: ProjectComponent, canActivate: [authGuard] },
+  { path: 'my-page', component: MyPageComponent, canActivate: [authGuard] },
+  { path: 'tickets/:id', component: TicketComponent, canActivate: [authGuard] },
+  { path: 'tickets/:ticketId/devoted-time/new', component: DevotedTimeFormComponent, canActivate: [authGuard] },
+  { path: 'tickets/:ticketId/devoted-time', component: DevotedTimeListComponent, canActivate: [authGuard] },
+  { path: 'tickets/:ticketId/devoted-time/update/:id', component: DevotedTimeFormComponent, canActivate: [authGuard] },
   { path: '**', redirectTo: 'login', pathMatch: 'full'},
 ];
 

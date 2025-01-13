@@ -1,10 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { Observable, of ,catchError, map, tap, Subject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Project } from '../interfaces/project.js';
 import { Project as ProjectClass } from '../classes/project-class.js';
 import { environment } from '../../environments/environment';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -22,16 +23,27 @@ export class ProjectService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) { }
 
   /** GET projects from the server */
   getProjects(): Observable<Project[]> {
+    // const token = localStorage.getItem('token')
+    // const headers = new HttpHeaders().set('Authorization', `${token}`)
+    
+    // return this.http.get<Project[]>(this.projectsUrl, { headers: headers})
+    //   .pipe(
+    //     tap(_ => console.log('fetched projects')),
+    //     catchError(this.handleError<Project[]>('getProjects', []))
+    //   );
+    
     return this.http.get<Project[]>(this.projectsUrl)
       .pipe(
         tap(_ => console.log('fetched projects')),
         catchError(this.handleError<Project[]>('getProjects', []))
       );
+
   }
 
   /** GET project by id. Will 404 if id not found */
