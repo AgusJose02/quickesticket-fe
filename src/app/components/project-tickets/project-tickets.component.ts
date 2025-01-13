@@ -68,7 +68,7 @@ export class ProjectTicketsComponent {
             this.tickets = [...this.filteredTickets];
           }
 
-        this.messages.push({severity:'info', summary:'Info Message', detail:'Ticket eliminado correctamente'})
+        this.messages.push({severity:'success', summary:'Info Message', detail:'Ticket eliminado correctamente'})
       });
   }
 }

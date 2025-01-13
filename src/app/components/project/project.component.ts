@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
+import { ToastService } from '../../services/toast.service.js';
 
 @Component({
   selector: 'app-project',
@@ -17,11 +18,13 @@ export class ProjectComponent {
   constructor(
     private route: ActivatedRoute,
     private projectService: ProjectService,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
-    this.getProject();
     this.section = 'tickets';
+    this.getProject();
+    this.toastService.showMessages();
   }
 
   getProject(): void {

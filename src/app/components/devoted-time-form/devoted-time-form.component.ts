@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { MessageService } from 'primeng/api';
 
 import { DevotedTime } from '../../classes/devoted-time-class.js';
 import { DevotedTime as DevotedTimeInterface } from '../../interfaces/devoted-time.js';
 import { TicketService } from '../../services/ticket.service.js';
 import { DevotedTimeService } from '../../services/devoted-time.service.js';
 import { Ticket } from '../../interfaces/ticket.js';
+import { ToastService } from '../../services/toast.service.js';
 
 @Component({
   selector: 'app-devoted-time-form',
@@ -37,9 +39,11 @@ export class DevotedTimeFormComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private location: Location,
     private ticketService: TicketService,
     private devotedTimeService: DevotedTimeService,
-    private location: Location,
+    private messageService: MessageService,
+    private toastService: ToastService
   ) { }
 
   ngOnInit(): void{
@@ -53,9 +57,13 @@ export class DevotedTimeFormComponent {
 
   onSubmit(): void {
     if (this.currentUrl === 'update') {
+      this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo actualizada correctamente.'})
       this.devotedTimeService.updateDevotedTime(this.model,this.ticketId)
-        .subscribe(() => this.router.navigate(['/tickets', this.ticketId, 'devoted-time']))
+      .subscribe(() =>
+        this.router.navigate(['/tickets', this.ticketId, 'devoted-time'])
+      )
     } if (this.currentUrl === 'new') {
+      this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo registrada.'})
       this.devotedTimeService.addDevotedTime(this.model, this.ticketId)
         .subscribe(() => this.router.navigate(['/tickets', this.ticketId]));
     }

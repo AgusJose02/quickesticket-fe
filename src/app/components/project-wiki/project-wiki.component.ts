@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
-import { Message } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { Project as ProjectClass} from '../../classes/project-class.js';
 
 @Component({
@@ -13,7 +13,6 @@ import { Project as ProjectClass} from '../../classes/project-class.js';
 export class ProjectWikiComponent {
   @Input() project?: Project;
 
-  messages: Message[] = [];
 
   creationDate = new Date;
 
@@ -24,6 +23,7 @@ export class ProjectWikiComponent {
 
   constructor(
     private projectService: ProjectService,
+    private messageService: MessageService
   ) { }
   
   ngOnInit(): void {
@@ -59,7 +59,7 @@ export class ProjectWikiComponent {
           this.project.wiki = wiki;
         }
         this.updateWiki = false;
-        this.messages = [{severity:'success', summary:'Completado', detail:'Wiki actualizada correctamente'}];
+        this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Wiki actualizada correctamente.'})
       });
     }
   }

@@ -16,6 +16,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 
 import { ConfirmationService } from 'primeng/api';
+import { ToastService } from './services/toast.service.js';
 import { MessageService } from 'primeng/api';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -80,6 +81,7 @@ import { authInterceptor } from './utils/auth.interceptor.js';
     TicketFilter,
     ConfirmationService,
     MessageService,
+    ToastService,
     provideHttpClient(withInterceptors([
       authInterceptor
     ]))

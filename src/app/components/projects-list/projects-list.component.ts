@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
+import { ToastService } from '../../services/toast.service.js';
 
 @Component({
   selector: 'app-projects-list',
@@ -13,7 +14,10 @@ export class ProjectsListComponent {
 
   createProject = false;
 
-  constructor(private projectService: ProjectService) { }
+  constructor(
+    private projectService: ProjectService,
+    private toastService: ToastService,
+  ) { }
 
   getProjects(): void {
     this.projectService.getProjects()
@@ -22,5 +26,6 @@ export class ProjectsListComponent {
 
   ngOnInit(): void {
     this.getProjects();
+    this.toastService.showMessages()
   }
 }

@@ -1,10 +1,11 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService, Message } from 'primeng/api';
+import { ConfirmationService, Message, MessageService } from 'primeng/api';
 
 import { Project } from '../../interfaces/project.js';
 import { Project as ProjectClass } from '../../classes/project-class.js';
 import { ProjectService } from '../../services/project.service.js';
+import { ToastService } from '../../services/toast.service.js';
 
 @Component({
   selector: 'app-edit-project-form',
@@ -15,8 +16,6 @@ import { ProjectService } from '../../services/project.service.js';
 export class EditProjectFormComponent {
   @Input() project?: Project;
 
-  messages: Message[] = [];
-
 
   submitted = false;
 
@@ -25,9 +24,11 @@ export class EditProjectFormComponent {
   model = new ProjectClass(0, undefined, undefined, undefined, undefined);
 
   constructor(
-    private projectService: ProjectService,
     private router: Router,
+    private projectService: ProjectService,
     private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private toastService: ToastService,
   ) { }
   
   ngOnInit(): void {
@@ -37,7 +38,7 @@ export class EditProjectFormComponent {
 
   onSubmit() {
     this.submitted = true;
-    this.messages = [{severity:'success', summary:'Completado', detail:'Proyecto actualizado correctamente'}];
+    this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Proyecto actualizado correctamente.'})
       
     this.updateProject();
     if (this.model.name && this.project) {
@@ -75,6 +76,7 @@ export class EditProjectFormComponent {
         message: '¿Confirma que desea eliminar el proyecto?',
         accept: () => {
           if (this.project) {
+            this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Proyecto eliminado correctamente.'})
             this.projectService.deleteProject(this.project.id)
             .subscribe(_ => this.router.navigate(['/projects']));
           }

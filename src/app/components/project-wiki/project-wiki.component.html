@@ -4,7 +4,6 @@
       <h2>Wiki</h2>
       <p-button *ngIf="!updateWiki" label="Editar wiki" (onClick)="onEdit()"></p-button>
     </div>
-    <p-messages [(value)]="messages"></p-messages>
 
     <p *ngIf="!project?.wiki && !updateWiki">
       ¡Este proyecto no tiene wiki aún!

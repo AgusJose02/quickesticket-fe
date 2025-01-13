@@ -4,12 +4,6 @@
     <a href="/projects/{{ticket?.project?.id}}">{{ ticket?.project?.name }}</a>
   </h1>
 
-    <!-- TODO: IMPLEMENTAR MENSAJES DE ÉXITO
-  <div>
-    <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
-    <p-message severity="Succes" text="Ticket actualizado"></p-message>
-  </div> -->
-
   <div class="ticket-menu">
     <h2 class="ticket-name">#{{ ticket?.id }} - {{ ticket?.title }}</h2>
     <div class="ticket-buttons" *ngIf="updateTicket===false">
@@ -65,4 +59,5 @@
 
   <app-ticket-form *ngIf="updateTicket" 
     [ticket]="ticket" (ticketUpdated)="onUpdate()" (cancel)="onCancel()"></app-ticket-form>
+
 </div>

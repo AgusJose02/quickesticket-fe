@@ -5,7 +5,8 @@ import { DevotedTimeService } from '../../services/devoted-time.service.js';
 import { DevotedTime } from '../../interfaces/devoted-time.js';
 import { Ticket } from '../../interfaces/ticket.js';
 import { TicketService } from '../../services/ticket.service.js';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { ToastService } from '../../services/toast.service.js';
 
 @Component({
   selector: 'app-devoted-time-list',
@@ -25,11 +26,14 @@ export class DevotedTimeListComponent {
     private devotedTimeService: DevotedTimeService,
     private ticketService: TicketService,
     private confirmationService: ConfirmationService,
+    private messageService: MessageService,
+    private toastService: ToastService,
   ) { }
 
   ngOnInit(): void {
     this.getTimeEntries();
     this.getTicket();
+    this.toastService.showMessages();
   }
 
   getTimeEntries(): void {
@@ -53,6 +57,7 @@ export class DevotedTimeListComponent {
       accept: () => {
         this.devotedTimeService.deleteDevotedTime(timeEntryId, this.ticketId)
           .subscribe(() => this.deleteTimeEntryFromArray(timeEntryId));
+        this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo eliminada correctamente.'});
       }
     });
   }
