@@ -77,7 +77,7 @@ import { authInterceptor } from './utils/auth.interceptor.js';
     ToastModule,
   ],
   providers: [
-    provideClientHydration(),
+    // provideClientHydration(), // Comentado debido a Warning en consola del browser: NG0505: No hydration info is present in server response.
     TicketFilter,
     ConfirmationService,
     MessageService,
