@@ -58,7 +58,7 @@
       </div>
 
       <div class="form-buttons">
-        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid || !dateValidation">{{ buttonLabel }}</button>
+        <button type="submit" class="btn btn-success" [disabled]="!projectForm.form.valid || !dateValidation || projectForm.form.pristine">{{ buttonLabel }}</button>
         <button type="button" class="btn btn-danger" (click)="onCancel()">Cancelar</button>
       </div>
 

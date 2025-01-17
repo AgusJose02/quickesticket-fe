@@ -72,7 +72,7 @@ export class TicketFormComponent {
       this.model.id = this.ticket.id;
       this.model.project = this.ticket.project.id;
       this.model.creator = this.ticket.creator.id;
-      this.model.responsible = this.ticket.responsible.id;
+      this.ticket.responsible ? this.model.responsible = this.ticket.responsible.id : this.model.responsible = null
       this.model.beginning_date = '';
 
       this.transformDate(this.ticket.beginning_date, this.ticket.end_date)
@@ -104,12 +104,11 @@ export class TicketFormComponent {
   // Transformación necesaria por problemas con las zonas horarias
   transformDate(date1: string, date2: string | null) {
       const begParts = date1.split('T')[0].split('-').map(Number);
-      this.begDate = new Date(begParts[0], begParts[1], begParts[2]);
-      
+      this.begDate = new Date(begParts[0], begParts[1] - 1, begParts[2]);
 
       if (date2) {
         const endParts = date2.split('T')[0].split('-').map(Number);
-        this.endDate = new Date(endParts[0], endParts[1], endParts[2]);
+        this.endDate = new Date(endParts[0], endParts[1] - 1, endParts[2]);
       }
   }
 
@@ -131,6 +130,7 @@ export class TicketFormComponent {
           (newTicket: TicketClass) => this.router.navigate(['/tickets', newTicket.id])
         );
     } else if(this.currentUrl === 'tickets') {
+      console.log(this.model)
       this.ticketService.updateTicket(this.model)
         .subscribe(_ => this.ticketUpdated.emit(false))
     }
