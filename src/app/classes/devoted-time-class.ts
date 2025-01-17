@@ -1,7 +1,7 @@
 export class DevotedTime {
   constructor(
   public id: number,
-  public ticket: number,
+  public ticket: number | undefined,
   public date: Date,
   public description: string,
   public amount?: number,

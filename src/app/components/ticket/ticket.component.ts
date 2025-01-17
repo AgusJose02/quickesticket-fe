@@ -17,8 +17,6 @@ export class TicketComponent {
 
   updateTicket = false;
 
-  totalTime = 0;
-
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -43,32 +41,14 @@ export class TicketComponent {
     this.updateTicket = false;
   }
 
-  setTotalTime(): void {
-    if (this.ticket) {
-      if (this.ticket.total_hours) {
-        this.totalTime = this.ticket.total_hours;
-      }
-    }
-  }
-
   getTicket(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.ticketService.getTicket(id)
       .subscribe(ticket => {
         this.ticket = ticket;
         this.updateTicket = false; // para que al editar se oculte el formulario
-        this.setTotalTime()
       })
   }
-
-  // deleteTicket(): void {
-  //   const id = Number(this.route.snapshot.paramMap.get('id'));
-  //   this.ticketService.deleteTicket(id)
-  //     .subscribe(() => {
-  //       this.tikcetDeletionService.notifyTicketDeleted(id)
-  //       this.location.back();
-  //     });
-  // }
 
   deleteTicket() {
     this.confirmationService.confirm({

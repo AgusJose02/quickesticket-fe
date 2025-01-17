@@ -29,7 +29,7 @@ export class DevotedTimeFormComponent {
 
   model = new DevotedTime(
     0, //id
-    this.ticketId, //ticket
+    undefined, //ticket
     new Date(), //date
     '', //description
     undefined, //amount
@@ -42,7 +42,6 @@ export class DevotedTimeFormComponent {
     private location: Location,
     private ticketService: TicketService,
     private devotedTimeService: DevotedTimeService,
-    private messageService: MessageService,
     private toastService: ToastService
   ) { }
 

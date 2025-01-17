@@ -39,9 +39,15 @@
 
       <div class="form-group">
         <label for="state">Estado</label>
-        <p-dropdown class="form-control" id="state" [options]="ticketStates" [required]="true" [(ngModel)]="model.state" optionLabel="description" optionValue="id" [showClear]="false"
-          placeholder="Selecciona un estado" name="state"></p-dropdown>
+        <p-dropdown class="form-control" id="state" [options]="ticketStates" [required]="true" [(ngModel)]="model.state"
+        optionLabel="description" optionValue="id" [showClear]="false" placeholder="Selecciona un estado" name="state"></p-dropdown>
       </div>
+
+      <div class="form-group">
+        <label for="asigned-to">Asignado a</label>
+        <p-dropdown class="form-control" id="asigned-to" [options]="users" [required]="false" [(ngModel)]="model.responsible"
+          optionLabel="username" optionValue="id" [showClear]="true" placeholder="Sin asignación" name="asigned-to"></p-dropdown>
+      </div> 
 
       <div class="form-group">
         <label for="description">Descripción</label>
