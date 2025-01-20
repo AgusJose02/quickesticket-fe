@@ -7,8 +7,7 @@ $navbar-height: 60px;
 
 .navbar {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
   background-color: $navbar-primary-color;
   padding: 0px;
   height: $navbar-height;
@@ -22,7 +21,10 @@ $navbar-height: 60px;
     align-items: center;
     justify-content: center;
     max-height: 100%;
-    width: 65%;
+    max-width: 30%;
+    h2 {
+      margin: 0 20px;
+    }
   }
 
   &-links {
@@ -32,13 +34,11 @@ $navbar-height: 60px;
     margin: 0;
     padding: 0px;
     height: 100%;
-    // border-style: solid;
     display: flex;
     align-items: center;
     width: 35%;
 
     li {
-      // display: inline;
       margin: 0px;
       font-size: 15px;
       width: 100%;

@@ -5,8 +5,7 @@ $navbar-height: 60px;
 
 .navbar {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // align-items: center;
   background-color: $navbar-primary-color;
   padding: 0px;
   margin: 0 0px;
@@ -16,23 +15,25 @@ $navbar-height: 60px;
   border: 0px;
 
   &-logo {
-    // border-style: solid;
-    width: 33%;
+    display: flex;
+    align-items: center;
+    max-height: 100%;
     img {
       max-height: 100%;
-      width: 10%;
-      margin-left: 20px;
-      margin-right: 20px;
+      width: 100%;
+      margin: 0px 20px;
+    }
+
+    h2 {
+      margin: 0px 20px 0px 0px;
     }
   }
 
   &-title {
-    // border-style: solid;
     display: flex;
     align-items: center;
     justify-content: center;
     max-height: 100%;
-    width: 33%;
   }
 
   &-links {
@@ -42,10 +43,8 @@ $navbar-height: 60px;
     margin: 0;
     padding: 0px;
     height: 100%;
-    // border-style: solid;
     display: flex;
     align-items: center;
-    width: 34%;
 
     li {
       margin: 0px;
@@ -68,6 +67,17 @@ $navbar-height: 60px;
         width: 100%;
         height: 100%;
       }
+    }
+  }
+
+  &-user {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 20px;
+    p {
+      font-size: medium;
+      margin: 0px 10px;
     }
   }
 

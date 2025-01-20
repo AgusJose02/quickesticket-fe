@@ -27,11 +27,11 @@ export class TicketFormComponent {
 
   currentUrl = this.route.snapshot.url[0].path;
   token = localStorage.getItem('token')
+  userId = this.authService.getPayloadField(this.token, 'id')
 
   begDate = new Date();
   endDate?: Date;
   dateValidation: boolean = true;
-  userId = this.authService.getPayloadField(this.token, 'id')
 
   model = new TicketClass(0, 0, 0, null, '', null, 1, 0, '', null);
 

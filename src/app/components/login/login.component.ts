@@ -19,12 +19,13 @@ export class LoginComponent {
   ){}
 
   model = new UserClass(
-    null, //username
+    '', //username
     null, //password
     null, //is_admin
   );
 
   onSubmit() {
+    this.model.username = this.model.username.toLowerCase()
     this.userService.login(this.model).subscribe({
       next: (token) => {
         this.router.navigate(['/home'])

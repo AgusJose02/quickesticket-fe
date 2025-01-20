@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http/index.js';
 import { MessageService } from 'primeng/api';
 
@@ -18,18 +17,18 @@ export class UserManagementComponent {
 
   constructor(
     private userService: UserService,
-    private router: Router,
     private messageService: MessageService,
     private errorHandlerService: ErrorHandlerService,
   ){}
 
   model = new UserClass(
-    null, //username
+    '', //username
     null, //password
     false, //is_admin
   );
 
   onSubmit() {
+    this.model.username = this.model.username.toLowerCase()
     this.userService.addUser(this.model).subscribe({
       next: (v) => {
         console.log('El usuario fue registrado correctamente.')

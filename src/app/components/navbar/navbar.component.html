@@ -1,15 +1,18 @@
 <nav class="navbar">
   <div class="navbar-logo">
     <img src="assets/quickesticket-logo.png" alt="QuickesTicket Logo">
-    <p-button icon="pi pi-sign-out" label="LogOut" severity="secondary" (click)="logOut()"/>
-  </div>
-  <div class="navbar-title">
     <h2>{{title}}</h2>
   </div>
+
   <ul class="navbar-links">
     <li><a routerLink="/home">Inicio</a></li>
     <li><a routerLink="/my-page">Mi página</a></li>
     <li><a routerLink="/projects">Mis proyectos</a></li>
     <li><a routerLink="/user-management">Administración</a></li>
   </ul>
+
+  <div class="navbar-user">
+    <p>{{username}} </p>
+    <p-button icon="pi pi-sign-out" severity="secondary" (click)="logOut()"/>
+  </div>
 </nav>
