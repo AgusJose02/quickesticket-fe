@@ -46,11 +46,6 @@ export class DevotedTimeListComponent {
       .subscribe(ticket => this.ticket = ticket);
   }
 
-  // deleteTimeEntry(timeEntryId: number): void {
-  //   this.devotedTimeService.deleteDevotedTime(timeEntryId, this.ticketId)
-  //     .subscribe(() => this.deleteTimeEntryFromArray(timeEntryId));
-  // }
-
   deleteTimeEntry(timeEntryId: number): void {
     this.confirmationService.confirm({
       message: '¿Confirma que desea eliminar la entrada?',
