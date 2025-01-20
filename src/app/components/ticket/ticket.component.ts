@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Ticket } from '../../interfaces/ticket.js';
 import { TicketService } from '../../services/ticket.service.js';
-import { TicketDeletionService } from '../../services/ticket-deletion.service.js';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ToastService } from '../../services/toast.service.js';
 
@@ -21,7 +20,6 @@ export class TicketComponent {
     private route: ActivatedRoute,
     private router: Router,
     private ticketService: TicketService,
-    private ticketDeletionService: TicketDeletionService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
     private toastService: ToastService,
@@ -57,7 +55,6 @@ export class TicketComponent {
         const id = Number(this.route.snapshot.paramMap.get('id'));
         this.ticketService.deleteTicket(id)
           .subscribe(() => {
-            this.ticketDeletionService.notifyTicketDeleted(id)
             this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Ticket eliminado correctamente.'})
             this.router.navigate(['/projects', this.ticket?.project.id])
           });

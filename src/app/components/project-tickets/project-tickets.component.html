@@ -3,8 +3,6 @@
   
   <h4 class="void-message" *ngIf="tickets.length === 0">{{project?.name}} aún no tiene tickets!</h4>
   
-  <p-messages [(value)]="messages"></p-messages>
-  
   <div class="left">
     <div class="tickets-list" *ngIf="tickets">
     
@@ -27,7 +25,7 @@
               <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
             </td>
             <td>{{ ticket.state.description }}</td>
-            <td>{{ ticket.responsible }}</td>
+            <td>{{ ticket.responsible?.username }}</td>
           </tr>
         </tbody>
       </table>

@@ -6,7 +6,7 @@ export interface Ticket {
   id: number;
   project: Project;
   creator: User;
-  responsible: User;
+  responsible: User | null;
   beginning_date: string;
   end_date: string;
   state: TicketState;
