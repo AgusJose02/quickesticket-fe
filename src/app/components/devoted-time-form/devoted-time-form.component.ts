@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import { MessageService } from 'primeng/api';
 
 import { DevotedTime } from '../../classes/devoted-time-class.js';
 import { DevotedTime as DevotedTimeInterface } from '../../interfaces/devoted-time.js';
@@ -9,6 +8,7 @@ import { TicketService } from '../../services/ticket.service.js';
 import { DevotedTimeService } from '../../services/devoted-time.service.js';
 import { Ticket } from '../../interfaces/ticket.js';
 import { ToastService } from '../../services/toast.service.js';
+import { AuthService } from '../../services/auth.service.js';
 
 @Component({
   selector: 'app-devoted-time-form',
@@ -18,6 +18,9 @@ import { ToastService } from '../../services/toast.service.js';
 export class DevotedTimeFormComponent {
 
   currentUrl = this.route.snapshot.url[3].path;
+  token = localStorage.getItem('token')
+  userId = this.authService.getPayloadField(this.token, 'id')
+
 
   ticketId = Number(this.route.snapshot.paramMap.get('ticketId'));  
   ticket?: Ticket;
@@ -27,11 +30,14 @@ export class DevotedTimeFormComponent {
 
   timeEntry?: DevotedTimeInterface;
 
+
+
   model = new DevotedTime(
-    0, //id
+    undefined, //id
     undefined, //ticket
+    undefined,
     new Date(), //date
-    '', //description
+    undefined, //description
     undefined, //amount
     undefined //client_time_amount
   );
@@ -42,7 +48,8 @@ export class DevotedTimeFormComponent {
     private location: Location,
     private ticketService: TicketService,
     private devotedTimeService: DevotedTimeService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void{
@@ -62,6 +69,7 @@ export class DevotedTimeFormComponent {
         this.router.navigate(['/tickets', this.ticketId, 'devoted-time'])
       )
     } if (this.currentUrl === 'new') {
+      this.model.user = this.userId
       this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo registrada.'})
       this.devotedTimeService.addDevotedTime(this.model, this.ticketId)
         .subscribe(() => this.router.navigate(['/tickets', this.ticketId]));
