@@ -1,24 +1,26 @@
 import { Component } from '@angular/core';
-import { HttpErrorResponse } from '@angular/common/http/index.js';
-import { MessageService } from 'primeng/api';
-
 import { UserService } from '../../services/user.service.js';
-import { User as UserClass } from '../../classes/user.js';
+import { MessageService } from 'primeng/api';
 import { ErrorHandlerService } from '../../services/error-handler.service.js';
 
+import { User as UserClass } from '../../classes/user.js';
+import { HttpErrorResponse } from '@angular/common/http/index.js';
+import { Router } from '@angular/router';
+
+
 @Component({
-  selector: 'app-user-management',
-  templateUrl: './user-management.component.html',
-  styleUrl: './user-management.component.scss'
+  selector: 'app-user-form',
+  templateUrl: './user-form.component.html',
+  styleUrl: './user-form.component.scss'
 })
-export class UserManagementComponent {
+export class UserFormComponent {
   secondPassword = null;
-  // isAdmin = false;
 
   constructor(
     private userService: UserService,
     private messageService: MessageService,
     private errorHandlerService: ErrorHandlerService,
+    private router: Router
   ){}
 
   model = new UserClass(
@@ -36,16 +38,13 @@ export class UserManagementComponent {
           severity: 'success',
           summary: 'Usuario registrado',
           detail: `El usuario ${this.model.username} fue registrado correctamente.`})
+          this.router.navigate(['management/users'])
       },
       error: (e: HttpErrorResponse) => {
         this.errorHandlerService.errorHandler(e)
       },
       complete: () => console.info('complete')
     })
-  }
-
-  onCancel() {
-
   }
 
 }

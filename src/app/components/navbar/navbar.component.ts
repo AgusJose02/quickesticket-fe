@@ -12,6 +12,7 @@ export class NavbarComponent {
 
   token = localStorage.getItem('token')
   username = this.authService.getPayloadField(this.token, 'username')
+  userIsAdmin = this.authService.getPayloadField(this.token, 'isAdmin')
 
   constructor(
     private router: Router,

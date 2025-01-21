@@ -2,7 +2,7 @@
   <div class="new-user">
     <h2>Crear nuevo usuario</h2>
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
-  
+
       <div class="form-group">
         <label for="username">Nombre del usuario</label>
         <input type="text" pInputText class="form-control" id="username" required [maxlength]="45"
@@ -11,7 +11,7 @@
           Campo obligatorio
         </div>
       </div>
-  
+
       <div class="form-group">
         <label for="password">Contraseña</label>
         <input type="password" pInputText class="form-control" id="password" required [maxlength]="255"
@@ -28,23 +28,24 @@
         <div [hidden]="password2.valid || password2.pristine" class="alert alert-danger">
           Campo obligatorio
         </div>
-        <div [hidden]="(secondPassword == model.password) || password2.pristine || !secondPassword" class="alert alert-danger second-alert">
+        <div [hidden]="(secondPassword == model.password) || password2.pristine || !secondPassword"
+          class="alert alert-danger second-alert">
           Las contraseñas no son iguales
         </div>
       </div>
 
       <div class="form-group checkbox-group">
         <label class="checkbox-label" for="is-admin">El usuario será administrador.</label>
-        <p-checkbox class="checkbox" [(ngModel)]="model.is_admin" name="adminCheckbox" #adminCheckbox="ngModel" [binary]="true" />
+        <p-checkbox class="checkbox" [(ngModel)]="model.is_admin" name="adminCheckbox" #adminCheckbox="ngModel"
+          [binary]="true" />
       </div>
-  
+
       <div class="form-buttons">
         <button type="submit" class="btn btn-success btn-full-width" size="large"
           [disabled]="!loginForm.form.valid || secondPassword != model.password">Registrar</button>
-        <button type="button" class="btn btn-danger" 
-          (click)="onCancel()">Cancelar</button>
+        <button type="button" class="btn btn-danger" routerLink="/management/users">Cancelar</button>
       </div>
-  
+
     </form>
 
   </div>

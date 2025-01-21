@@ -36,8 +36,11 @@ import { DevotedTimeListComponent } from './components/devoted-time-list/devoted
 import { HomeComponent } from './components/home/home.component';
 import { ProjectWikiComponent } from './components/project-wiki/project-wiki.component';
 import { LoginComponent } from './components/login/login.component';
-import { UserManagementComponent } from './components/user-management/user-management.component';
+import { ManagementComponent } from './components/management/management.component.js';
 import { authInterceptor } from './utils/auth.interceptor.js';
+import { UserFormComponent } from './components/user-form/user-form.component';
+import { UsersListComponent } from './components/users-list/users-list.component';
+import { InvoicingComponent } from './components/invoicing/invoicing.component';
 
 
 @NgModule({
@@ -57,7 +60,10 @@ import { authInterceptor } from './utils/auth.interceptor.js';
     HomeComponent,
     ProjectWikiComponent,
     LoginComponent,
-    UserManagementComponent
+    ManagementComponent,
+    UserFormComponent,
+    UsersListComponent,
+    InvoicingComponent
   ],
   imports: [
     BrowserModule,
