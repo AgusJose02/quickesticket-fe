@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Ticket } from '../interfaces/ticket.js';
 import { Ticket as TicketClass } from '../classes/ticket-class.js';
 import { environment } from '../../environments/environment';
+import { ErrorHandlerService } from './error-handler.service.js';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class TicketService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private errorHandlerService: ErrorHandlerService
   ) { }
 
   /** GET tickets from the server */
@@ -80,6 +82,8 @@ export class TicketService {
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
+
+      this.errorHandlerService.errorHandler(error)
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

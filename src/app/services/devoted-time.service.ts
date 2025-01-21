@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { DevotedTime as DevotedTimeClass } from '../classes/devoted-time-class.js';
 import { DevotedTime } from '../interfaces/devoted-time.js';
 import { environment } from '../../environments/environment';
+import { ErrorHandlerService } from './error-handler.service.js';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,9 @@ export class DevotedTimeService {
   };
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private errorHandlerService: ErrorHandlerService
+    
   ) { }
 
   /** GET project by id. Will 404 if id not found */
@@ -81,6 +84,8 @@ export class DevotedTimeService {
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
+
+      this.errorHandlerService.errorHandler(error)
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

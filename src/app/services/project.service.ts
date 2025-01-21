@@ -1,11 +1,11 @@
-import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, of ,catchError, map, tap, Subject} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { Project } from '../interfaces/project.js';
 import { Project as ProjectClass } from '../classes/project-class.js';
 import { environment } from '../../environments/environment';
-import { isPlatformBrowser } from '@angular/common';
+import { ErrorHandlerService } from './error-handler.service.js';
 
 @Injectable({
   providedIn: 'root'
@@ -24,20 +24,11 @@ export class ProjectService {
 
   constructor(
     private http: HttpClient,
-    @Inject(PLATFORM_ID) private platformId: Object
+    private errorHandlerService: ErrorHandlerService,
   ) { }
 
   /** GET projects from the server */
-  getProjects(): Observable<Project[]> {
-    // const token = localStorage.getItem('token')
-    // const headers = new HttpHeaders().set('Authorization', `${token}`)
-    
-    // return this.http.get<Project[]>(this.projectsUrl, { headers: headers})
-    //   .pipe(
-    //     tap(_ => console.log('fetched projects')),
-    //     catchError(this.handleError<Project[]>('getProjects', []))
-    //   );
-    
+  getProjects(): Observable<Project[]> {    
     return this.http.get<Project[]>(this.projectsUrl)
       .pipe(
         tap(_ => console.log('fetched projects')),
@@ -92,6 +83,8 @@ export class ProjectService {
 
       // TODO: better job of transforming error for user consumption
       console.log(`${operation} failed: ${error.message}`);
+
+      this.errorHandlerService.errorHandler(error)
 
       // Let the app keep running by returning an empty result.
       return of(result as T);
