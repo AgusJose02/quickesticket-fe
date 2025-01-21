@@ -72,7 +72,7 @@ export class DevotedTimeFormComponent {
       this.model.user = this.userId
       this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo registrada.'})
       this.devotedTimeService.addDevotedTime(this.model, this.ticketId)
-        .subscribe(() => this.router.navigate(['/tickets', this.ticketId]));
+        .subscribe(() => this.router.navigate(['/tickets', this.ticketId, 'devoted-time']));
     }
   }
 
