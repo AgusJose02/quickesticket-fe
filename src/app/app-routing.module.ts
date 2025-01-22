@@ -39,6 +39,7 @@ const routes: Routes = [
       { path: 'users', component: UsersListComponent },
       { path: 'new-user', component: UserFormComponent },
       { path: 'invoicing', component: InvoicingComponent },
+      { path: 'update-user/:id', component: UserFormComponent}
     ]
   },
   { path: '**', redirectTo: 'login', pathMatch: 'full'},

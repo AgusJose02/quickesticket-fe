@@ -20,8 +20,8 @@ export class LoginComponent {
 
   model = new UserClass(
     '', //username
-    null, //password
-    null, //is_admin
+    undefined, //password
+    undefined, //is_admin
   );
 
   onSubmit() {

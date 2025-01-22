@@ -14,16 +14,16 @@ export class ErrorHandlerService {
   ) { }
 
   errorHandler(e: HttpErrorResponse) {
-  if (e.error.message){
-    this.messageService.add({severity: 'error', summary: 'Error', detail: e.error.message})
-    if (e.status === 401) {
-      this.router.navigate(['/login'])
-    } else if (e.status === 403) {
-      this.router.navigate(['/home'])
-    }
+    if (e.error.message){
+      this.messageService.add({severity: 'error', summary: 'Error', detail: e.error.message})
+      if (e.status === 401) {
+        this.router.navigate(['/login'])
+      } else if (e.status === 403) {
+        this.router.navigate(['/home'])
+      }
 
-  } else {
-    this.messageService.add({severity: 'error', summary: 'Error', detail: 'Comuníquese con el administrador de la página.'})
+    } else {
+      this.messageService.add({severity: 'error', summary: 'Error', detail: 'Comuníquese con el administrador de la página.'})
+    }
   }
-}
 }
