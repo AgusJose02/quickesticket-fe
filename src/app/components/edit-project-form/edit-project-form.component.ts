@@ -17,7 +17,7 @@ export class EditProjectFormComponent {
   @Input() project?: Project;
 
 
-  submitted = false;
+  formIsValid = false;
 
   projectHasTickets = true;
 
@@ -37,7 +37,7 @@ export class EditProjectFormComponent {
   }
 
   onSubmit() {
-    this.submitted = true;
+    this.formIsValid = false;
     this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Proyecto actualizado correctamente.'})
       
     this.updateProject();
@@ -47,6 +47,11 @@ export class EditProjectFormComponent {
       this.project.description = this.model.description;
     }
   }
+
+  onProjectChange(): void {
+    this.formIsValid = true
+  }
+
 
   assingProject(): void {
     if (this.project) {

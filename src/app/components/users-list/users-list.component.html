@@ -40,11 +40,11 @@
     <form class="form" (ngSubmit)="onSubmit()" #dateForm="ngForm">
       <div class="form-group month-picker">
         <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy"
-          class="form-control" id="date" name="date"></p-calendar>
+          class="form-control" id="date" name="date" (ngModelChange)="onDateChange()"></p-calendar>
       </div>
 
       <div class="form-buttons">
-        <p-button type="submit" class="picker-button" [disabled]="dateForm.form.pristine" icon="pi pi-check"></p-button>
+        <p-button type="submit" class="picker-button" [disabled]="dateForm.form.pristine || !this.formIsValid" icon="pi pi-check"></p-button>
       </div>
     </form>
 

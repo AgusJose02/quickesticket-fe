@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { User } from '../../interfaces/user.js';
 import { UserService } from '../../services/user.service.js';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
@@ -12,10 +11,10 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 export class UsersListComponent {
   users: any[] = []
 
-  mes = 0
-  anio = 0
-
   date = new Date
+  mes =  this.date.getMonth() + 1 
+  anio = this.date.getFullYear()
+  formIsValid = true
 
   constructor(
     private router: Router,
@@ -29,7 +28,7 @@ export class UsersListComponent {
   }
 
   getUsersWorkTime(): void {
-    this.userService.getUsersWorkTime(2025, 1)
+    this.userService.getUsersWorkTime(this.date.getFullYear(), this.date.getMonth() + 1)
       .subscribe(usersWT => {this.users = usersWT});
   }
 
@@ -52,7 +51,14 @@ export class UsersListComponent {
     this.users = this.users.filter( user => user.id !== id);
   }
 
+  onDateChange(): void {
+    this.formIsValid = true
+  }
+
   onSubmit(): void {
-    console.log(this.date)
+    this.getUsersWorkTime()
+    this.mes =  this.date.getMonth() + 1 
+    this.anio = this.date.getFullYear()
+    this.formIsValid = false
   }
 }
