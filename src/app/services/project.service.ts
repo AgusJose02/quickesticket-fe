@@ -72,7 +72,29 @@ export class ProjectService {
       tap(_ => console.log(`deleted project id=${id}`)),
       catchError(this.handleError<ProjectClass>('deleteProject'))
     );
-  } 
+  }
+
+  /** GET assigned users from the server */
+  getAssignedUsers(id: number | undefined): Observable<any[]> {    
+    const url = `${this.projectsUrl}/${id}/assigned-users`;
+    
+    return this.http.get<any[]>(url)
+      .pipe(
+        tap(_ => console.log('fetched assigned users')),
+        catchError(this.handleError<Project[]>('getAssignedUsers', []))
+      );
+  }
+
+  /** PUT assigned users on the server */
+  assignUsers(userIds: number[], id: number | undefined): Observable<any> {    
+    const url = `${this.projectsUrl}/${id}/assign-users`;
+    const body = { userIds }
+    
+    return this.http.put(url, body, this.httpOptions).pipe(
+        tap(_ => console.log('fetched assigned users')),
+        catchError(this.handleError<any>('assignUsers'))
+      );
+  }
 
   // Handler de errores
   private handleError<T>(operation = 'operation', result?: T) {

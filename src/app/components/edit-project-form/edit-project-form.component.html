@@ -1,42 +1,67 @@
 <div class="container">
-
   <h1>Opciones</h1>
 
-  <h3>Editar</h3>
-
-  <form *ngIf="project" (ngSubmit)="onSubmit()" #projectForm="ngForm">
-
-    <div class="form-group">
-      <label for="name">Nombre</label>
-      <input type="text" pInputText class="form-control" id="name"
-        required
-        [maxlength]="25"
-        [(ngModel)]="model.name" name="name" #name="ngModel"
-        (ngModelChange)="onProjectChange()">
-      <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-        Campo obligatorio
+  <div class="settings">
+    <h3>Editar</h3>
+  
+    <form *ngIf="project" (ngSubmit)="onSubmit()" #projectForm="ngForm">
+  
+      <div class="form-group">
+        <label for="name">Nombre</label>
+        <input type="text" pInputText class="form-control" id="name"
+          required
+          [maxlength]="25"
+          [(ngModel)]="model.name" name="name" #name="ngModel"
+          (ngModelChange)="this.formIsValid = true">
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+          Campo obligatorio
+        </div>
       </div>
-    </div>
 
-    <div class="form-group">
-      <label for="description">Descripción</label>
-      <input type="text" pInputText class="form-control" id="description"
-        [maxLength]="75"
-        [(ngModel)]="model.description" name="description"
-        (ngModelChange)="onProjectChange()">
-    </div>
-    <button type="submit" class="btn btn-success"
-      [disabled]="!projectForm.form.valid || projectForm.form.pristine || !formIsValid">Editar proyecto</button>
+  
+      <div class="form-group">
+        <label for="description">Descripción</label>
+        <input type="text" pInputText class="form-control" id="description"
+          [maxLength]="75"
+          [(ngModel)]="model.description" name="description"
+          (ngModelChange)="this.formIsValid = true">
+      </div>
+      <button type="submit" class="btn btn-success"
+        [disabled]="!projectForm.form.valid || projectForm.form.pristine || !formIsValid">Editar proyecto</button>
+    </form>
 
-  </form>
+  </div>
 
-  <div>
+  <div class="settings">
+    <h3>Asignar usuarios</h3>
+  
+    <form *ngIf="project" (ngSubmit)="onAssignUsersSubmit()" #asignUserForm="ngForm">
+      
+      <div class="form-group">
+        <label for="users">Usuarios</label>
+        
+        <div class="user-multiselect">
+          <p-multiSelect class="form-control" name="users"
+            [options]="users" [(ngModel)]="assignedUsers" (ngModelChange)="this.assignUserFormIsValid = true"
+            optionLabel="name" optionLabel="username" optionValue="id" placeholder="Asigne usuarios"/>
+          <button type="submit" class="btn btn-success"
+            [disabled]="asignUserForm.form.pristine || !assignUserFormIsValid">Aplicar</button>
+        </div>
+
+
+      </div>
+
+    </form>
+  
+  </div>
+
+
+  <div class="settings">
 
     <h3>Borrar</h3>
 
     <p>En caso de que el proyecto tenga tickets cargados no podrá eliminarse.</p>
 
-    <!-- <p-confirmDialog header="Confirmar"></p-confirmDialog> -->
     <p-button (click)="deleteProject()" [disabled]="projectHasTickets" label="Borrar proyecto"></p-button>
   </div>
 </div>

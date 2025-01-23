@@ -6,7 +6,7 @@
     <li><button (click)="section='tickets'">Tickets</button></li>
     <li><button (click)="section='new-ticket'">Nuevo ticket</button></li>
     <li><button (click)="section='wiki'">Wiki</button></li>
-    <li><button (click)="section='settings'">Opciones</button></li>
+    <li><button *ngIf="userIsAdmin" (click)="section='settings'">Opciones</button></li>
   </ul>
 </nav>
 

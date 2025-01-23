@@ -14,6 +14,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 import { ConfirmationService } from 'primeng/api';
 import { ToastService } from './services/toast.service.js';
@@ -66,6 +67,7 @@ import { InvoicingComponent } from './components/invoicing/invoicing.component';
     InvoicingComponent
   ],
   imports: [
+    MultiSelectModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,

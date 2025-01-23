@@ -1,6 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConfirmationService, Message, MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { Project } from '../../interfaces/project.js';
 import { Project as ProjectClass } from '../../classes/project-class.js';
@@ -16,12 +16,13 @@ import { ToastService } from '../../services/toast.service.js';
 export class EditProjectFormComponent {
   @Input() project?: Project;
 
-
   formIsValid = false;
-
+  assignUserFormIsValid = false;
   projectHasTickets = true;
-
+  
   model = new ProjectClass(0, undefined, undefined, undefined, undefined);
+  users: any[] = []
+  assignedUsers: number[] = []
 
   constructor(
     private router: Router,
@@ -34,12 +35,12 @@ export class EditProjectFormComponent {
   ngOnInit(): void {
     this.checkTickets();
     this.assingProject();
+    this.getAssignedUsers()
   }
 
   onSubmit() {
     this.formIsValid = false;
-    this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Proyecto actualizado correctamente.'})
-      
+
     this.updateProject();
     if (this.model.name && this.project) {
       this.project.name = this.model.name;
@@ -48,8 +49,10 @@ export class EditProjectFormComponent {
     }
   }
 
-  onProjectChange(): void {
-    this.formIsValid = true
+  onAssignUsersSubmit(): void {
+    this.assignUserFormIsValid = false
+
+    this.assignUsers()
   }
 
 
@@ -64,7 +67,7 @@ export class EditProjectFormComponent {
   updateProject(): void {
     if (this.project) {
       this.projectService.updateProject(this.model)
-        .subscribe();
+        .subscribe(_ => this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Proyecto actualizado correctamente.'}));
     }
   }
 
@@ -87,5 +90,18 @@ export class EditProjectFormComponent {
           }
         }
     });
+  }
+
+  getAssignedUsers(): void {
+    this.projectService.getAssignedUsers(this.project?.id)
+      .subscribe(users => {
+        this.users = users
+        this.assignedUsers = this.users.filter(user => user.assigned ===1).map(user => user.id)
+      })    
+  }
+
+  assignUsers(): void {
+    this.projectService.assignUsers(this.assignedUsers, this.project?.id)
+      .subscribe(_ => this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Usuarios asignados correctamente.'}))    
   }
 }

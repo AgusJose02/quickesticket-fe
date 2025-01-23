@@ -4,6 +4,9 @@
   <h4 class="void-message" *ngIf="tickets.length === 0">{{project?.name}} aún no tiene tickets!</h4>
   
   <div class="left">
+
+    <h2 class="list-header">Mis tickets</h2>
+
     <div class="tickets-list" *ngIf="tickets">
     
       <div *ngIf="tickets.length && tickets.length > 0">
