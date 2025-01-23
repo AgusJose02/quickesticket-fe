@@ -14,6 +14,7 @@ export class DevotedTimeService {
   private env: any = environment;
 
   private ticketUrl = `${this.env.apiUrl}/tickets`;
+  private devotedTimeUrl = `${this.env.apiUrl}/devoted-time`;
   private devotedTimeDir = 'devoted-time';
 
   httpOptions = {
@@ -43,6 +44,17 @@ export class DevotedTimeService {
       .pipe(
         tap(_ => console.log('fetched devotedTime')),
         catchError(this.handleError<DevotedTime[]>('getTicketsDevotedTime', []))
+      );
+  }
+
+  /** GET devotedTimes from the server */
+  getUserDevotedTime(userId: number): Observable<DevotedTime[]> {
+    const url = `${this.devotedTimeUrl}/user/${userId}`;
+
+    return this.http.get<DevotedTime[]>(url)
+      .pipe(
+        tap(_ => console.log('fetched devotedTime')),
+        catchError(this.handleError<DevotedTime[]>('getUserDevotedTime', []))
       );
   }
 

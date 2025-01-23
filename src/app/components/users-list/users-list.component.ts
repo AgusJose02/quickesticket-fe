@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../../services/user.service.js';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { DevotedTimeService } from '../../services/devoted-time.service.js';
+import { map, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-users-list',
@@ -12,13 +14,13 @@ export class UsersListComponent {
   users: any[] = []
 
   date = new Date
-  mes =  this.date.getMonth() + 1 
-  anio = this.date.getFullYear()
+  dateToPrint = this.date
   formIsValid = true
 
   constructor(
     private router: Router,
     private userService: UserService,
+    private devotedTimeService: DevotedTimeService,
     private confirmationService: ConfirmationService,
     private messageService: MessageService
   ) { }
@@ -37,14 +39,28 @@ export class UsersListComponent {
   }
 
   deleteUser(id: number): void {
-    this.confirmationService.confirm({
-      message: '¿Confirma que desea eliminar al usuario?',
-      accept: () => {
-        this.userService.deleteUser(id)
-          .subscribe(() => this.deleteUserFromArray(id));
-        this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Usuario eliminado correctamente.'});
+    this.userIsRemovable(id).subscribe(response => {
+      
+      if (response) {
+        this.confirmationService.confirm({
+          message: '¿Confirma que desea eliminar al usuario?',
+          accept: () => {
+            this.userService.deleteUser(id)
+              .subscribe(() => this.deleteUserFromArray(id));
+            this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Usuario eliminado correctamente.'});
+          }
+        });
+  
+      } else {
+        this.messageService.add({severity: 'error', summary: 'Acción cancelada', detail: 'El usuario tiene entradas de tiempo cargadas.'})
       }
-    });
+    })
+
+  }
+
+  userIsRemovable(id: number): Observable<boolean> {
+    return this.devotedTimeService.getUserDevotedTime(id).pipe(
+      map(entries => entries.length === 0))
   }
 
   deleteUserFromArray(id: number): void {
@@ -57,8 +73,7 @@ export class UsersListComponent {
 
   onSubmit(): void {
     this.getUsersWorkTime()
-    this.mes =  this.date.getMonth() + 1 
-    this.anio = this.date.getFullYear()
+    this.dateToPrint = this.date
     this.formIsValid = false
   }
 }

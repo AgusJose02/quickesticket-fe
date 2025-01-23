@@ -11,7 +11,7 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Horas trabajadas [{{ mes }}/{{ anio }}]</th>
+            <th>Horas trabajadas [{{ dateToPrint | date: 'MM/yyyy':'UTC' }}]</th>
             <th>Editar</th>
             <th>Eliminar</th>
           </tr>
