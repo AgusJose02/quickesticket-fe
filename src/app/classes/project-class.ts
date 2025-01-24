@@ -7,5 +7,6 @@ export class Project {
     public description: string | null | undefined,
     public wiki: string | null | undefined,
     public creation_date: string | null | undefined,
+    public hourly_rate: number | undefined
   ) { }
 }

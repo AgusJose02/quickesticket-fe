@@ -22,6 +22,14 @@
           [maxlength]="75"
           [(ngModel)]="model.description" name="description">
       </div>
+
+      <div class="form-group">
+        <label for="hourly-rate">Valor de la hora</label>
+        <p-inputNumber class="form-control" id="hourly-rate" name="hourly-rate" [(ngModel)]="model.hourly_rate"
+          locale="de-DE" mode="currency" currency="USD" [minFractionDigits]="2"
+          [maxlength]="12" [maxFractionDigits]="2" />
+      </div>
+
       <div class="form-buttons">
         <button type="submit" class="btn btn-success"
           [disabled]="!projectForm.form.valid">Crear proyecto</button>

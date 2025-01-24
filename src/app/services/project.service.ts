@@ -96,6 +96,15 @@ export class ProjectService {
       );
   }
 
+  getProjectsDevotedTime(year: number, month: number): Observable<any[]> {
+    const url = `${this.projectsUrl}/devoted-time?year=${year}&month=${month}`
+
+    return this.http.get<any[]>(url).pipe(
+      tap(_ => console.log(`fetched projects devoted time`)),
+      catchError(this.handleError<any[]>(`getProjectsDevotedTime`))
+    );
+  }
+
   // Handler de errores
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

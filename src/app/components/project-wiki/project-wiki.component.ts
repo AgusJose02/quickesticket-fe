@@ -19,7 +19,7 @@ export class ProjectWikiComponent {
   updateWiki = false;
   wikiModel = '';
 
-  model = new ProjectClass(0, undefined, undefined, undefined, undefined);
+  model = new ProjectClass(0, undefined, undefined, undefined, undefined, undefined);
 
   constructor(
     private projectService: ProjectService,

@@ -1,1 +1,49 @@
-<p>invoicing works!</p>
+<div class="container">
+  <div class="left">
+
+    <div class="list-header">
+      <h2>Facturación</h2>
+    </div>
+
+    <div class="project-list">
+      <table class="table" class="table">
+
+        <thead>
+          <tr>
+            <th>Proyecto</th>
+            <th class="number">Horas dedicadas [{{ dateToPrint | date: 'MM/yyyy':'UTC' }}]</th>
+            <th class="number">Valor de la hora</th>
+            <th class="number">Valor total del mes</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let project of projects">
+            <td>{{ project.name }}</td>
+            <td class="number">{{ project.total_time }} </td>
+            <td class="number">{{ project.hourly_rate | currency }}</td>
+            <td class="number">{{ project.total_time * project.hourly_rate | currency }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="right">
+    <h3 class="picker-header">Selector de mes</h3>
+    <p>Elige el mes para el que deseas visualizar las horas trabajadas.</p>
+
+    <form class="form" (ngSubmit)="onSubmit()" #dateForm="ngForm">
+      <div class="form-group month-picker">
+        <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy" class="form-control" id="date" name="date"
+          (ngModelChange)="onDateChange()"></p-calendar>
+      </div>
+
+      <div class="form-buttons">
+        <p-button type="submit" class="picker-button" [disabled]="dateForm.form.pristine || !this.formIsValid"
+          icon="pi pi-check"></p-button>
+      </div>
+    </form>
+
+  </div>
+</div>

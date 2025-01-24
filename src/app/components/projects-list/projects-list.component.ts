@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Project } from '../../interfaces/project.js';
 import { ProjectService } from '../../services/project.service.js';
 import { ToastService } from '../../services/toast.service.js';
+import { AuthService } from '../../services/auth.service.js';
 
 @Component({
   selector: 'app-projects-list',
@@ -14,9 +15,13 @@ export class ProjectsListComponent {
 
   createProject = false;
 
+  token = localStorage.getItem('token')
+  userIsAdmin = this.authService.getPayloadField(this.token, 'isAdmin')
+
   constructor(
     private projectService: ProjectService,
     private toastService: ToastService,
+    private authService: AuthService,
   ) { }
 
   getProjects(): void {

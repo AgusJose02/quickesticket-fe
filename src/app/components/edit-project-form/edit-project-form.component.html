@@ -18,7 +18,6 @@
         </div>
       </div>
 
-  
       <div class="form-group">
         <label for="description">Descripción</label>
         <input type="text" pInputText class="form-control" id="description"
@@ -26,6 +25,14 @@
           [(ngModel)]="model.description" name="description"
           (ngModelChange)="this.formIsValid = true">
       </div>
+
+      <div class="form-group">
+        <label for="hourly-rate">Valor de la hora</label>
+        <p-inputNumber class="form-control" id="hourly-rate" name="hourly-rate"
+          [(ngModel)]="model.hourly_rate" (ngModelChange)="this.formIsValid = true"
+          locale="de-DE" mode="currency" currency="USD" [minFractionDigits]="2" [maxlength]="12" [maxFractionDigits]="2" />
+      </div>
+
       <button type="submit" class="btn btn-success"
         [disabled]="!projectForm.form.valid || projectForm.form.pristine || !formIsValid">Editar proyecto</button>
     </form>

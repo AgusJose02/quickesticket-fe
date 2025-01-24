@@ -17,7 +17,8 @@ export class ProjectFormComponent {
     '', //name
     null, //description
     null, //wiki
-    '' //creation_date
+    '', //creation_date
+    undefined //hourly_rate
   );
 
   creationDate = new Date;

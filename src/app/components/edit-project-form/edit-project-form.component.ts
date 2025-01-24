@@ -20,7 +20,7 @@ export class EditProjectFormComponent {
   assignUserFormIsValid = false;
   projectHasTickets = true;
   
-  model = new ProjectClass(0, undefined, undefined, undefined, undefined);
+  model = new ProjectClass(0, undefined, undefined, undefined, undefined, undefined);
   users: any[] = []
   assignedUsers: number[] = []
 
@@ -46,7 +46,10 @@ export class EditProjectFormComponent {
       this.project.name = this.model.name;
     } if (this.model.description && this.project) {
       this.project.description = this.model.description;
+    } if (this.model.hourly_rate && this.project) {
+      // this.project.hourly_rate = this.model.hourly_rate;
     }
+
   }
 
   onAssignUsersSubmit(): void {
