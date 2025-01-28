@@ -5,6 +5,8 @@ import { TicketState } from '../../interfaces/ticket-state.js';
 import { TicketService } from '../../services/ticket.service.js';
 import { TicketStateService } from '../../services/ticket-state.service.js';
 import { TicketFilter } from '../../providers/ticket-filter.js';
+import { DevotedTime } from '../../interfaces/devoted-time.js';
+import { DevotedTimeService } from '../../services/devoted-time.service.js';
 
 @Component({
   selector: 'app-my-page',
@@ -18,15 +20,19 @@ export class MyPageComponent {
   ticketStates: TicketState[] = [];
   selectedTicketStates: number[] = [1, 2, 3, 4];
 
+  timeEntries: DevotedTime[] = []
+
   constructor(
     private ticketService: TicketService,
     private ticketStateService: TicketStateService,
+    private devotedTimeService: DevotedTimeService,
     private ticketFilter: TicketFilter,
   ) { }
 
   ngOnInit(): void {
     this.getTickets();
     this.getTicketStates();
+    this.getDevotedTimeFromLastWeek();
   }  
 
   getTickets(): void {
@@ -50,4 +56,12 @@ export class MyPageComponent {
     );
   }
 
+  getDevotedTimeFromLastWeek(): void {
+    this.devotedTimeService.getDevotedTimeFromLastWeek()
+      .subscribe(entries => this.timeEntries = entries); //Por alguna razón lo transforma a orden ascendente
+  }
+
+  getTotal(): number {
+    return this.timeEntries.reduce((total, entry) => total + entry.amount, 0);
+  }
 }

@@ -15,6 +15,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { TableModule } from 'primeng/table';
 
 import { ConfirmationService } from 'primeng/api';
 import { ToastService } from './services/toast.service.js';
@@ -83,6 +84,7 @@ import { InvoicingComponent } from './components/invoicing/invoicing.component';
     InputTextareaModule,
     InputTextModule,
     ToastModule,
+    TableModule,
   ],
   providers: [
     // provideClientHydration(), // Comentado debido a Warning en consola del browser: NG0505: No hydration info is present in server response.

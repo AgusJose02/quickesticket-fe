@@ -36,6 +36,15 @@ export class DevotedTimeService {
     );
   }
 
+  /** GET project by id. Will 404 if id not found */
+  getDevotedTimeFromLastWeek(): Observable<DevotedTime[]> {
+    const url = `${this.devotedTimeUrl}/last-week`;
+    return this.http.get<DevotedTime[]>(url).pipe(
+      tap(_ => console.log(`fetched devotedTime entries`)),
+      catchError(this.handleError<DevotedTime[]>(`getDevotedTimeFromLastWeek`))
+    );
+  }
+
   /** GET devotedTimes from the server */
   getTicketsDevotedTime(ticketId: number): Observable<DevotedTime[]> {
     const url = `${this.ticketUrl}/${ticketId}/${this.devotedTimeDir}`;

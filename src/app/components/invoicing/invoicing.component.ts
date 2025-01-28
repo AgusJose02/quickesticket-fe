@@ -25,7 +25,7 @@ export class InvoicingComponent {
 
   getProjectsDevotedTime(): void {
     this.projectService.getProjectsDevotedTime(this.date.getFullYear(), this.date.getMonth() + 1)
-      .subscribe(projectsDT => {this.projects = projectsDT, console.log(this.projects)})
+      .subscribe(projectsDT => {this.projects = projectsDT})
   }
 
   onDateChange(): void {
