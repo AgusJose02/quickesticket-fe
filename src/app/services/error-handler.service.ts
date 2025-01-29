@@ -1,3 +1,4 @@
+import { Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http/index.js';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -11,11 +12,17 @@ export class ErrorHandlerService {
   constructor(
     private messageService: MessageService,
     private router: Router,
+    private locale: Location
   ) { }
 
   errorHandler(e: HttpErrorResponse) {
     if (e.error.message){
-      this.messageService.add({severity: 'error', summary: 'Error', detail: e.error.message})
+      if (e.status === 500){
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Elemento no encontrado'})
+        this.router.navigate(['/home'])
+      } else {
+        this.messageService.add({severity: 'error', summary: 'Error', detail: e.error.message})
+      }
       if (e.status === 401) {
         this.router.navigate(['/login'])
       } else if (e.status === 403) {
