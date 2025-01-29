@@ -47,7 +47,7 @@ export class EditProjectFormComponent {
     } if (this.model.description && this.project) {
       this.project.description = this.model.description;
     } if (this.model.hourly_rate && this.project) {
-      // this.project.hourly_rate = this.model.hourly_rate;
+      this.project.hourly_rate = this.model.hourly_rate;
     }
 
   }
@@ -64,6 +64,7 @@ export class EditProjectFormComponent {
       this.model.id = this.project.id;
       this.model.name = this.project.name;
       this.model.description = this.project.description;
+      this.model.hourly_rate = this.project.hourly_rate
     }
   }
 

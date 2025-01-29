@@ -11,20 +11,20 @@
         <thead>
           <tr>
             <th>Nombre</th>
-            <th>Horas trabajadas [{{ dateToPrint | date: 'MM/yyyy':'UTC' }}]</th>
-            <th>Editar</th>
-            <th>Eliminar</th>
+            <th class="number">Horas trabajadas [{{ dateToPrint | date: 'MM/yyyy':'UTC' }}]</th>
+            <th class="number">Editar</th>
+            <th class="number">Eliminar</th>
           </tr>
         </thead>
         
         <tbody>
           <tr *ngFor="let user of users">
             <td>{{ user.username }}</td>
-            <td>{{user.total_time}} </td>
-            <td>
+            <td class="number">{{user.total_time}} </td>
+            <td class="number">
               <p-button icon="pi pi-pencil" (click)="updateUser(user.id)"></p-button>
             </td>
-            <td>
+            <td class="number">
               <p-button icon="pi pi-trash" (click)="deleteUser(user.id)"></p-button>
             </td>
           </tr>
@@ -38,9 +38,9 @@
     <p>Elige el mes para el que deseas visualizar las horas trabajadas.</p>
     
     <form class="form" (ngSubmit)="onSubmit()" #dateForm="ngForm">
-      <div class="form-group month-picker">
+      <div class="form-group">
         <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy"
-          class="form-control" id="date" name="date" (ngModelChange)="onDateChange()"></p-calendar>
+          class="form-control primeng-form-control" id="date" name="date" (ngModelChange)="onDateChange()"></p-calendar>
       </div>
 
       <div class="form-buttons">

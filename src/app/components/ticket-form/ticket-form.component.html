@@ -1,7 +1,6 @@
 <div class="container">
   <div>
 
-      <!-- {{currentUrl}} -->
     <h1 *ngIf="currentUrl==='projects'">Nuevo ticket de {{ project?.name }}</h1>
     <h1 *ngIf="currentUrl==='tickets'">Editar ticket</h1>
 
@@ -19,17 +18,17 @@
 
       <div class="form-group">
         <label for="beggining_date">Fecha de inicio</label>
-        <p-calendar class="form-control" [(ngModel)]="this.begDate"
+        <p-calendar class="form-control primeng-form-control" [(ngModel)]="this.begDate"
           [showButtonBar]="true" (ngModelChange)="validateEndDate()" [required]="true"
           dateFormat="dd/mm/yy" name="beggining_date" #beggining_date="ngModel"></p-calendar>
-        <div [hidden]="beggining_date.valid || beggining_date.pristine" class="alert alert-danger">
+        <div [hidden]="beggining_date.valid || beggining_date.pristine" class="alert alert-danger primeng-alert">
           Campo obligatorio
         </div>
       </div>
 
       <div class="form-group">
         <label for="end_date">Fecha de fin</label>
-        <p-calendar class="form-control" [(ngModel)]="this.endDate"
+        <p-calendar class="form-control primeng-form-control" [(ngModel)]="this.endDate"
           [showButtonBar]="true" (ngModelChange)="validateEndDate()"
           dateFormat="dd/mm/yy" name="end_date" #end_date="ngModel"></p-calendar>
         <div [hidden]="end_date.pristine || this.dateValidation" class="alert alert-danger">
@@ -39,13 +38,13 @@
 
       <div class="form-group">
         <label for="state">Estado</label>
-        <p-dropdown class="form-control" id="state" [options]="ticketStates" [required]="true" [(ngModel)]="model.state"
+        <p-dropdown class="form-control primeng-form-control" id="state" [options]="ticketStates" [required]="true" [(ngModel)]="model.state"
         optionLabel="description" optionValue="id" [showClear]="false" placeholder="Selecciona un estado" name="state"></p-dropdown>
       </div>
 
       <div class="form-group">
         <label for="asigned-to">Asignado a</label>
-        <p-dropdown class="form-control" id="asigned-to" [options]="users" [required]="false" [(ngModel)]="model.responsible"
+        <p-dropdown class="form-control primeng-form-control" id="asigned-to" [options]="users" [required]="false" [(ngModel)]="model.responsible"
           optionLabel="username" optionValue="id" [showClear]="true" placeholder="Sin asignación" name="asigned-to"></p-dropdown>
       </div> 
 

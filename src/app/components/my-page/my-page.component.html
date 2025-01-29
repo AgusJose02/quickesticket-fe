@@ -48,7 +48,7 @@
     
         <thead>
           <tr>
-            <th>ID</th>
+            <th class="number">ID</th>
             <th>Título</th>
             <th>Estado</th>
             <th>Proyecto</th>
@@ -57,7 +57,7 @@
     
         <tbody>
           <tr *ngFor="let ticket of  filteredTickets">
-            <td>{{ ticket.id }}</td>
+            <td class="number">{{ ticket.id }}</td>
             <td>
               <a href="/tickets/{{ticket.id}}">{{ ticket.title }}</a>
             </td>

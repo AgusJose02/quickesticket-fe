@@ -7,4 +7,5 @@ export interface Project {
   wiki: string;
   creation_date: string;
   tickets: Ticket[];
+  hourly_rate: number
 }

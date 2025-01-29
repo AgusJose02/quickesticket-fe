@@ -34,9 +34,9 @@
     <p>Elige el mes para el que deseas visualizar los datos de facturación.</p>
 
     <form class="form" (ngSubmit)="onSubmit()" #dateForm="ngForm">
-      <div class="form-group month-picker">
-        <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy" class="form-control" id="date" name="date"
-          (ngModelChange)="onDateChange()"></p-calendar>
+      <div class="form-group">
+        <p-calendar [(ngModel)]="date" view="month" dateFormat="mm/yy" class="form-control primeng-form-control"
+        id="date" name="date" (ngModelChange)="onDateChange()"></p-calendar>
       </div>
 
       <div class="form-buttons">

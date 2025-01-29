@@ -1,16 +1,15 @@
+.container {
+  padding-bottom: 100px;
+}
+
 .user-multiselect {
   display: flex;
-
-  // .form-control {
-  //   width: 150px;
-  // }
 
   .btn {
     margin-left: 10px;
   }
-
-  .p-multiselect {
-    width: 300px;
-  }
 }
 
+.multiselect-form-control {
+  width: 150px;
+}

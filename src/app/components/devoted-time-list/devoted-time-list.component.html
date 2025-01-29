@@ -16,11 +16,11 @@
         <tr>
           <th>Fecha</th>
           <th>Descripción</th>
-          <th>Cantidad</th>
-          <th>Cantidad cliente</th>
+          <th class="number">Cantidad</th>
+          <th class="number">Cantidad cliente</th>
           <th>Usuario</th>
-          <th>Editar</th>
-          <th>Eliminar</th>
+          <th class="number">Editar</th>
+          <th class="number">Eliminar</th>
         </tr>
       </thead>
 
@@ -28,14 +28,13 @@
         <tr *ngFor="let time of  timeEntries">
           <td>{{ time.date | date:'dd/MM/yyyy':'UTC'}}</td>
           <td>{{ time.description }}</td>
-          <td>{{ time.amount }} h</td>
-          <td><p *ngIf="time.client_time_amount">{{ time.client_time_amount}} h</p></td>
+          <td class="number">{{ time.amount }} h</td>
+          <td class="number">{{ time.client_time_amount}} h</td>
           <td>{{ time.user.username}}</td>
-          <td>
+          <td class="number">
             <p-button icon="pi pi-pencil" (click)="updateTimeEntry(time.id)"></p-button>
           </td>
-          <td>
-            <!-- <p-confirmDialog header="Confirmar"></p-confirmDialog> -->
+          <td class="number">
             <p-button icon="pi pi-trash" (click)="deleteTimeEntry(time.id)"></p-button>
           </td>
         </tr>

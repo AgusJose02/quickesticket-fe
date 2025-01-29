@@ -2,12 +2,13 @@ $navbar-primary-color: #146da9;
 $navbar-hover-color: #34393a;
 $navbar-background-color: #ecf0f1;
 $navbar-height: 60px;
+$navbar-left-padding: 307.27px;
 
 .navbar {
   display: flex;
   justify-content: left;
   background-color: $navbar-primary-color;
-  padding-left: 322.43px;
+  padding-left: $navbar-left-padding;
   height: $navbar-height;
   color: #fff;
   border-radius: 0px 0px 5px 5px;

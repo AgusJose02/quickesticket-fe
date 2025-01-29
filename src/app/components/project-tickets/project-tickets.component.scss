@@ -4,15 +4,12 @@
 }
 
 .left {
-  // border-style: solid;
-  // border-color: red;
-  width: 80%;
+  width: 50%;
+  min-width: 600px;
 }
 
 .right {
-  // border-style: solid;
-  // border-color: blue;
-  width: 20%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   padding-left: 20px;
@@ -44,10 +41,13 @@
 }
 
 .table {
-
   margin-right: 20px;
 }
 
 .void-message {
   width: 100%;
+}
+
+.number {
+  text-align: center;
 }

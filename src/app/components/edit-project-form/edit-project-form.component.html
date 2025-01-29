@@ -28,7 +28,7 @@
 
       <div class="form-group">
         <label for="hourly-rate">Valor de la hora</label>
-        <p-inputNumber class="form-control" id="hourly-rate" name="hourly-rate"
+        <p-inputNumber class="form-control primeng-form-control" id="hourly-rate" name="hourly-rate"
           [(ngModel)]="model.hourly_rate" (ngModelChange)="this.formIsValid = true"
           locale="de-DE" mode="currency" currency="USD" [minFractionDigits]="2" [maxlength]="12" [maxFractionDigits]="2" />
       </div>
@@ -48,7 +48,7 @@
         <label for="users">Usuarios</label>
         
         <div class="user-multiselect">
-          <p-multiSelect class="form-control" name="users"
+          <p-multiSelect class="form-control primeng-form-control multiselect-form-control" name="users"
             [options]="users" [(ngModel)]="assignedUsers" (ngModelChange)="this.assignUserFormIsValid = true"
             optionLabel="name" optionLabel="username" optionValue="id" placeholder="Asigne usuarios"/>
           <button type="submit" class="btn btn-success"

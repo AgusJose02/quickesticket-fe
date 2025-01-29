@@ -62,6 +62,8 @@ export class DevotedTimeFormComponent {
   }
 
   onSubmit(): void {
+    if(!this.model.client_time_amount) { this.model.client_time_amount = this.model.amount }
+    
     if (this.currentUrl === 'update') {
       this.toastService.addMessage({severity: 'success', summary: 'Hecho!', detail: 'Entrada de tiempo actualizada correctamente.'})
       this.devotedTimeService.updateDevotedTime(this.model,this.ticketId)

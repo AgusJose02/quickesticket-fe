@@ -37,6 +37,7 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0px;
   padding-left: 150px;
   padding-right: 150px;
+  padding-bottom: 100px;
 }
 
 .form-buttons {
@@ -47,4 +48,23 @@ h1, h2, h3, h4, h5, h6 {
 
 .description {
   white-space: pre-wrap;
+}
+
+// Corrección de bug visual en etiquetas de primeng
+.primeng-form-control {
+  padding: 0px 0px;
+  background-color: $background-color;
+  border: 0px;
+}
+
+.p-calendar, .p-multiselect, .p-dropdown, .p-inputnumber-input {
+  width: 150px;
+}
+
+.form-control, .alert-danger {
+max-width: 300px;
+}
+
+.primeng-alert {
+  width: 154px;
 }

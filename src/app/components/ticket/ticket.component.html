@@ -12,7 +12,6 @@
       <p-button (click)="deleteTicket()" label="Borrar"></p-button>
     </div>
   </div>
-  <!-- <p-confirmDialog header="Confirmar"></p-confirmDialog> -->
 
   <div *ngIf="updateTicket===false">
 
@@ -57,7 +56,8 @@
     </div>
   </div>
 
-  <app-ticket-form *ngIf="updateTicket" 
-    [ticket]="ticket" (ticketUpdated)="onUpdate()" (cancel)="onCancel()"></app-ticket-form>
-
+  
 </div>
+
+<app-ticket-form *ngIf="updateTicket" 
+  [ticket]="ticket" (ticketUpdated)="onUpdate()" (cancel)="onCancel()"></app-ticket-form>
