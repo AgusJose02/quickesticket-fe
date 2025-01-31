@@ -18,7 +18,7 @@ export class ProjectFormComponent {
     null, //description
     null, //wiki
     '', //creation_date
-    undefined //hourly_rate
+    0 //hourly_rate
   );
 
   creationDate = new Date;
@@ -34,6 +34,7 @@ export class ProjectFormComponent {
     this.submitted = true;
 
     this.model.creation_date = this.creationDate.toDateString()
+    if (!this.model.hourly_rate) { this.model.hourly_rate = 0}
     
     this.projectService.addProject(this.model)
       .subscribe(

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
+import { DateTime } from 'luxon'
 
 import { DevotedTime } from '../../classes/devoted-time-class.js';
 import { DevotedTime as DevotedTimeInterface } from '../../interfaces/devoted-time.js';
@@ -36,7 +37,7 @@ export class DevotedTimeFormComponent {
     undefined, //id
     undefined, //ticket
     undefined,
-    new Date(), //date
+    new Date,//date
     undefined, //description
     undefined, //amount
     undefined //client_time_amount
@@ -108,18 +109,17 @@ export class DevotedTimeFormComponent {
   validateDate(): void {
     this.dateValidation = true;
     if (this.ticket) {
-      let devotedTimeDate = this.model.date
-        .setHours(0,0,0,0);
-      let beginningDate = new Date(this.ticket.beginning_date)
-        .setHours(0,0,0,0);
-      let endDate = new Date(this.ticket.end_date)
-        .setHours(0,0,0,0); //-75600000
+
+      // let devotedTimeDate = DateTime.fromJSDate(this.model.date, { zone: 'utc' }).startOf('day').toISO()
+      let devotedTimeDate = this.model.date.toISOString()
+      let beginningDate = this.ticket.beginning_date
+      let endDate = this.ticket.end_date
 
       if (devotedTimeDate < beginningDate) { // Fecha anterior a inicio
         this.dateValidation = false; 
         this.dateValidationMessage = 'La fecha es anterior a la fecha de inicio del ticket';
       } else { // no
-        if (endDate !== -75600000) { // Hay fecha de fin
+        if (endDate) { // Hay fecha de fin
           if (devotedTimeDate > endDate ) { // Fecha posterior a fin
           this.dateValidation = false;
           this.dateValidationMessage = 'La fecha es posterior a la fecha de fin del ticket';

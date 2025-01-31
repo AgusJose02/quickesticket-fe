@@ -70,6 +70,7 @@ export class EditProjectFormComponent {
 
   updateProject(): void {
     if (this.project) {
+      if (!this.model.hourly_rate) { this.model.hourly_rate = 0}
       this.projectService.updateProject(this.model)
         .subscribe(_ => this.messageService.add({severity: 'success', summary: 'Hecho!', detail: 'Proyecto actualizado correctamente.'}));
     }

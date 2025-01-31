@@ -18,7 +18,7 @@ export class ErrorHandlerService {
   errorHandler(e: HttpErrorResponse) {
     if (e.error.message){
       if (e.status === 500){
-        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Elemento no encontrado'})
+        this.messageService.add({severity: 'error', summary: 'Error', detail: 'Error interno en el servidor.'})
         this.router.navigate(['/home'])
       } else {
         this.messageService.add({severity: 'error', summary: 'Error', detail: e.error.message})
