@@ -64,7 +64,7 @@ export class EditProjectFormComponent {
       this.model.id = this.project.id;
       this.model.name = this.project.name;
       this.model.description = this.project.description;
-      this.model.hourly_rate = this.project.hourly_rate
+      this.model.hourly_rate = Number(this.project.hourly_rate)
     }
   }
 
